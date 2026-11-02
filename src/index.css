@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-devanagari: 'Noto Sans Devanagari', sans-serif;
+
+    --color-primary: #b0004a;
+    --color-primary-container: #d81b60;
+    --color-primary-fixed: #ffd9de;
+    --color-on-primary: #ffffff;
+    
+    --color-secondary: #805062;
+    --color-secondary-container: #fec1d6;
+    
+    --color-tertiary: #00662c;
+    --color-tertiary-emerald: #25d366;
+    
+    --color-zari: #c59b27;
+    --color-zari-light: #f7e7b4;
+
+    --color-surface: #fbf9f8;
+    --color-surface-dim: #dcd9d9;
+    --color-surface-container: #f0eded;
+    --color-surface-container-high: #eae8e7;
+    --color-on-surface: #1b1c1c;
+    --color-on-surface-variant: #5a4044;
+    --color-outline: #8e6f74;
+    --color-outline-variant: #e3bdc3;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: var(--font-serif);
+  }
+
+  .font-devanagari {
+    font-family: var(--font-devanagari);
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f3f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #d81b6080;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b0004a;
+}

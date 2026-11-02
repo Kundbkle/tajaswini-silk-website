@@ -1,0 +1,181 @@
+---
+name: Tejaswini Silk Luxury Weaves
+colors:
+  surface: '#fbf9f8'
+  surface-dim: '#dcd9d9'
+  surface-bright: '#fbf9f8'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f6f3f2'
+  surface-container: '#f0eded'
+  surface-container-high: '#eae8e7'
+  surface-container-highest: '#e4e2e1'
+  on-surface: '#1b1c1c'
+  on-surface-variant: '#5a4044'
+  inverse-surface: '#303030'
+  inverse-on-surface: '#f3f0f0'
+  outline: '#8e6f74'
+  outline-variant: '#e3bdc3'
+  surface-tint: '#bc004f'
+  primary: '#b0004a'
+  on-primary: '#ffffff'
+  primary-container: '#d81b60'
+  on-primary-container: '#fff2f3'
+  inverse-primary: '#ffb2bf'
+  secondary: '#805062'
+  on-secondary: '#ffffff'
+  secondary-container: '#fec1d6'
+  on-secondary-container: '#7b4c5e'
+  tertiary: '#00662c'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#008239'
+  on-tertiary-container: '#dbffdb'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#ffd9de'
+  primary-fixed-dim: '#ffb2bf'
+  on-primary-fixed: '#3f0016'
+  on-primary-fixed-variant: '#90003b'
+  secondary-fixed: '#ffd9e4'
+  secondary-fixed-dim: '#f2b6cb'
+  on-secondary-fixed: '#330f1f'
+  on-secondary-fixed-variant: '#65394b'
+  tertiary-fixed: '#66ff8e'
+  tertiary-fixed-dim: '#3de273'
+  on-tertiary-fixed: '#002109'
+  on-tertiary-fixed-variant: '#005322'
+  background: '#fbf9f8'
+  on-background: '#1b1c1c'
+  surface-variant: '#e4e2e1'
+typography:
+  headline-xl:
+    fontFamily: Playfair Display
+    fontSize: 48px
+    fontWeight: '700'
+    lineHeight: 56px
+  headline-xl-mobile:
+    fontFamily: Playfair Display
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: 40px
+  headline-lg:
+    fontFamily: Playfair Display
+    fontSize: 36px
+    fontWeight: '600'
+    lineHeight: 44px
+  headline-lg-mobile:
+    fontFamily: Playfair Display
+    fontSize: 26px
+    fontWeight: '600'
+    lineHeight: 34px
+  headline-md:
+    fontFamily: Playfair Display
+    fontSize: 28px
+    fontWeight: '600'
+    lineHeight: 36px
+  headline-sm:
+    fontFamily: Playfair Display
+    fontSize: 22px
+    fontWeight: '500'
+    lineHeight: 30px
+  tagline-devanagari:
+    fontFamily: Noto Sans
+    fontSize: 18px
+    fontWeight: '500'
+    lineHeight: 26px
+    letterSpacing: 0.02em
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '400'
+    lineHeight: 28px
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 15px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 20px
+  label-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 13px
+    fontWeight: '600'
+    lineHeight: 18px
+    letterSpacing: 0.05em
+  label-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.08em
+rounded:
+  sm: 0.125rem
+  DEFAULT: 0.25rem
+  md: 0.375rem
+  lg: 0.5rem
+  xl: 0.75rem
+  full: 9999px
+spacing:
+  gutter: 1.5rem
+  margin: 2rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 1rem
+  space-lg: 1.5rem
+  space-xl: 2.5rem
+---
+
+## Brand & Style
+This design system captures the royal heritage, meticulous artisanal weaving, and cultural warmth of Pune’s heritage silk district, Kumthekar Road in Sadashiv Peth. Drawing directly from traditional Maharashtrian wedding elegance, the visual aesthetic blends regal Paithani motifs (peacocks, zari borders, floral creepers, and intricate pallu patterns) with a high-end luxury e-commerce experience.
+
+The design movement combines refined ethnic luxury with modern editorial minimalism. Pristine white and soft rose surfaces provide ample breathing room for vibrant handloom weaves, while deep magenta and touches of celebratory zari gold evoke auspiciousness, trust, and Maharashtrian bridal grandeur. The UI evokes confidence, timeless craftsmanship, and accessible heritage, honoring legacy shopping rituals while empowering modern bridal families and global patrons to purchase with ease.
+
+## Colors
+The palette celebrates classic handloom silk tones rooted in the brand's visual identity:
+- **Primary (`#D81B60`)**: Gulabi / Rani Pink (hot magenta). The signature color of celebratory Paithani silk, used for high-impact actions, marquee headlines, and focal branding.
+- **Secondary (`#F8BBD0`)**: Light Rose. A soft, warm touchpoint for badges, subtle card highlights, and hairline decorative borders.
+- **Tertiary (`#25D366`)**: WhatsApp Emerald Green. Specifically reserved for interactive live assistance, direct saree booking, and customer inquiry triggers.
+- **Neutral (`#333333`)**: Deep Charcoal. Delivers high-contrast readability across typography, avoiding stark harsh black while feeling grounded and literary.
+- **Surface Accents**: Soft Blush Pink (`#FCE4EC`) and Pure White (`#FFFFFF`) form layered, luminous backgrounds, replicating the gleam of unprocessed silk yarn and zari sheen.
+
+## Typography
+Typography bridges royal Maharashtrian heritage with e-commerce clarity:
+- **Headlines**: Playfair Display delivers high-contrast serifs reminiscent of editorial luxury catalogs and bridal magazines.
+- **Body**: Plus Jakarta Sans provides clean, open, and welcoming geometric legibility for fabric specs, weave descriptions, care instructions, and checkout flows.
+- **Vernacular Script**: Noto Sans Devanagari ensures crisp rendering for Marathi phrases and cultural heritage tags like *"स्त्रियस) �)&�)a�8),8)`�)*�8)"x)'8),�)-x)(�)/�),8)`�������H]\��X�[��\��[�\��\�HYY�܈\\��\�H��X�[ۈX�[�[���X���\��]���H�\���H��]\]YH]][�X�]K�����^[�]	��X�[�H^[�]�[Y\�ۈHL�X��[[��\�ۜ�]�H�ZYܚY\�YۙY��]�H�\�Y\�[�^[\�H�\�X[�X�H^H��[X[�[�H\�X�[��ܛ��N��H
+��\���
+L�
+�J���L���[[��̜�]\��[��Y�HX\��[���[��X[X��[[�Y]ܚX[��؛����[�][KX[��H�\�YH�\[��]Z[˂�H
+��X�]
+͎HLNN\
+J�����[[����]\��[�̜X\��[���]�]\��X��\�^[�]˂�H
+��[ؚ[H
+͎
+J�����[[��M��]\��[�M�X\��[��XZ[�Z[�[���[Y�K]�YY�H[XY�\�H�[ۜ��]�X��Y�HX�[ۜ˂�H�]ZX��\�X�[�X�[���[Y\�ۈ][\\�و�[ܚ]^�[����X][���X�H\��[��\�H]Z[[��[���X��ݙ[�[��H��\˂����[]�][ۈ	�\�\Z[ZX���[�H�X��X��\�[�][۸�%�ٝ[]�]Y[�[Z[��\��]\�[�YX�[�X�[��H
+���\��X�HY\�ʊ���\�H�\��X�\��]ۈё������[��][ۚ[���ѐ�MP��܈�\��X�����[��\�]�H[���[��[Y[��[�˂�H
+���ٝ���H[X�Y[��Y��ʊ��[��XYو��ܙ^H���Y���[]�]Y[[Y[���\�[�[�K\�ٝY��\�Y�Y��[�Y�]�Z[����H
+�ؘJ�M���M��
+X�]HM����\��Y]\�K��H
+���\�KR[��\�Y�ܙ\�ʊ��^\�H��X���[Y\�[��X]\�Y\�[[ۚX[�][^�H[�[�KY�[�H\�ܙ\�[�ю��܈�\�H��[�ۙH
+�L���]	H�X�]JH[ۙ��YH[X�]HZ\�^H�]\�X\��˂�����\\H\�YۈY��H�ٝ�ܛ�\�\��]X�\�H
+��[�Y�\�ΈX
+K��]ۜ���X�[\�X[���Y]�[�[�]�Y[��\��H�X�H��YZK�\�\��[��H��X�\�YZ[ܙY[�\�و��Y�[��\�Y\��[H]��Y[�����\��ܛ�\�ˈ�Y�\�[��]�\��][���Y��\��][^�H�[[�۝�\���\�[��Z\�][]HX�[ۜ����H��X��\��X�\˂������\ۙ[��H
+���]ۜʊ���H
+��[X\�H�J��Y\�P���X��ܛ�[��]\�H�]H\�ܘ\KZY��Y]\�X��[�Yۈݙ\��]�X�H��܈Y\\�XY�[�H��˂�H
+��X�ۙ\�H��ܙ\���K�\�][�H[��P���]�ٝѐ�MP��X��ܛ�[��\�ۈݙ\���H
+��]�\ܙ\��J��̍Q͍�[�]ۈ�X]\�[��H�]�\X�ۈ[����]H^�܈[��[��Y[��ۜ�[][ۈ[��\�YH[�]Z\�Y\˂��H
+����X��\�ʊ���Hܚ\�Y�X\�X��][�
+΍
+H�\�X�[��ܘ\H����\�[��[K�ܙ\�[��\H]Z[˂�H�X�H�\�Y��[�X\��[�[���H�\�Y�˂�H[X�]H\ю���ܙ\��]H�X�H���H�Y��ۈݙ\����H
+��ܛ�[Y[�[]�Y\��	�[�Y�ʊ���H�X�[ۈ]�Y\���X]\�H�Y][ۘ[�ܘ[�Z\�^HܙY\\��X�ܜ��Y�\�[��[��H�[]Z�\���Y�\�[�\���\��ܙ\�[�Y���H�X��ܛ�[��]\�X\����[�\�Y[�ѐ�MP�]���X�]H�ۛ܈Z][�H�X]�[��ܘY����H
+���\�	��[\�ʊ���H�ٝ�\�ѐ�MP��X��ܛ�[��]�P��^�܈X�]�H�[\��
+K�ˋ
+�\�HY[�HZ][�J�
+��[��]�\�[J�
+�XZ\�[�H�]]�\�J�
+���Y[��\��X]J�K���H
+���ܛH�Y[�	�[�]ʊ���H�X[��]H�۝Z[�\���]ю��Y�][����\�]�Y���P��ۈ���\�Z\�Y�]�X\��\���[X�[[��
