@@ -22,11 +22,11 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.png"
+                src="/tejaswini-logo.png"
                 alt={SHOP_CONFIG.name}
-                width="48"
-                height="48"
-                className="w-12 h-12 object-contain rounded"
+                width="260"
+                height="58"
+                className="w-48 sm:w-60 h-auto object-contain"
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
@@ -117,7 +117,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
           {/* Col 2: Owners & Telephone */}
           <div className="space-y-2.5">
             <h4 className="font-serif font-bold text-sm text-white uppercase tracking-wider">
-              Owners & Contact
+              Contact
             </h4>
             <div className="space-y-1 text-[#dcd9d9]">
               {SHOP_CONFIG.owners.map((owner) => (
