@@ -15,7 +15,6 @@ export const SHOP_CONFIG = {
 
   // Owners & Contact details
   owners: [
-    { name: 'Anand Trimal', phone: '8855966816', displayPhone: '+91 88559 66816' },
     { name: 'Rajesh Trimal', phone: '9922441515', displayPhone: '+91 99224 41515' }
   ],
   whatsapp: '8446006000',
@@ -40,7 +39,7 @@ export const SHOP_CONFIG = {
   },
 
   // Business & Tax details
-  gstNo: '27AAPFT8786R1ZM',
+  gstNo: '27ARDPT8189K2ZU',
 
   // Optional links & info (leave empty strings if not yet provided; UI will automatically hide them)
   // TODO: Add your store opening hours here (e.g. '10:30 AM to 8:30 PM (All 7 Days)')
