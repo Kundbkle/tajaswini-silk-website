@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Store Owners & Phone Quick Touchpoint */}
             <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#5a4044]">
-              <span className="font-semibold text-[#1b1c1c]">Owners:</span>
+              <span className="font-semibold text-[#1b1c1c]">Contact:</span>
               {SHOP_CONFIG.owners.map((owner, idx) => (
                 <span key={owner.name} className="flex items-center gap-1">
                   <span>{owner.name}</span>
