@@ -38,11 +38,11 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex items-center gap-3 group text-left whitespace-nowrap shrink-0"
         >
           <img
-            src="/logo.png"
+            src="/tejaswini-logo.png"
             alt={SHOP_CONFIG.name}
-            width="44"
-            height="44"
-            className="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded"
+            width="260"
+            height="58"
+            className="w-36 sm:w-48 h-auto object-contain"
             loading="eager"
             onError={(e) => {
               // Graceful fallback if image is missing
@@ -50,10 +50,10 @@ export const Header: React.FC<HeaderProps> = ({
             }}
           />
           <div>
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#b0004a] block leading-none">
+            <span className="sr-only">
               {SHOP_CONFIG.name}
             </span>
-            <span className="font-devanagari text-[11px] sm:text-xs text-[#805062] font-medium block mt-1 tracking-wide">
+            <span className="sr-only">
               {SHOP_CONFIG.tagline}
             </span>
           </div>
