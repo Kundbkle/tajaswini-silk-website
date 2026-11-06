@@ -56,15 +56,15 @@ export const HeritageStory: React.FC = () => {
             </p>
 
             <p className="text-sm text-[#5a4044] leading-relaxed">
-              Whether you are shopping for your wedding Muhurat, Antarpat, Sakharpuda, or family celebrations, Anand Trimal and Rajesh Trimal personally guide bridal families to find the perfect colour, motif, and drape.
+              Whether you are shopping for your wedding Muhurat, Antarpat, Sakharpuda, or family celebrations, Rajesh Trimal personally guides bridal families to find the perfect colour, motif, and drape.
             </p>
 
             {/* Direct Contact Card */}
             <div className="p-4 bg-white border border-[#e3bdc3] rounded-lg space-y-2 text-xs">
-              <div className="font-bold text-[#1b1c1c]">Personal Showroom Assistance:</div>
+              <div className="font-bold text-[#1b1c1c]">Contact:</div>
               <div className="flex flex-wrap items-center gap-4 text-[#5a4044]">
-                <span>Anand Trimal: <strong className="text-[#1b1c1c]">8855966816</strong></span>
-                <span>·</span>
+                
+                
                 <span>Rajesh Trimal: <strong className="text-[#1b1c1c]">9922441515</strong></span>
               </div>
               <div className="text-[#805062] pt-1">
