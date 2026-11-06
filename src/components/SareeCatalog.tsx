@@ -297,6 +297,10 @@ export const SareeCatalog: React.FC<SareeCatalogProps> = ({
         {/* Loading Skeletons */}
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div role="status" aria-label="Loading sarees" className="col-span-full flex justify-center py-4">
+              <img src="/tejaswini-logo.png" alt="" width="260" height="58" className="w-44 max-w-[70vw] h-auto motion-safe:animate-pulse" />
+              <span className="sr-only">Loading sarees…</span>
+            </div>
             {[1, 2, 3, 4, 5, 6].map((idx) => (
               <div key={idx} className="bg-white border border-[#e3bdc3]/60 rounded-lg overflow-hidden animate-pulse">
                 <div className="aspect-[4/3] bg-[#f0eded]" />
