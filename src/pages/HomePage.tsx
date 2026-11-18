@@ -3,6 +3,7 @@ import { DbSaree } from '../types/database';
 import { getSarees } from '../lib/supabase';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
+import { ShopByWeave } from '../components/ShopByWeave';
 import { NewArrivalsSection } from '../components/NewArrivalsSection';
 import { SareeCatalog } from '../components/SareeCatalog';
 import { DrapeStudio } from '../components/DrapeStudio';
@@ -152,6 +153,14 @@ export const HomePage: React.FC = () => {
         <Hero
           onExploreCollection={() => scrollTo('catalog')}
           onOpenConcierge={() => setIsConciergeOpen(true)}
+        />
+
+        <ShopByWeave
+          sarees={sarees}
+          onSelectCategory={(category) => {
+            setSelectedCategory(category);
+            window.setTimeout(() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' }), 0);
+          }}
         />
 
         {/* New Arrivals Section driven by is_new_arrival */}
