@@ -10,6 +10,7 @@ import { ContactPage } from './pages/ContactPage';
 import { SpecialCollectionPage } from './pages/SpecialCollectionPage';
 import { RouteSeo } from './components/RouteSeo';
 import { PoliciesPage } from './pages/PoliciesPage';
+import { WeaveCollectionPage } from './pages/WeaveCollectionPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/collections" element={<CollectionsPage />} />
+        <Route path="/collections/:weave" element={<WeaveCollectionPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/sale" element={<SpecialCollectionPage type="sale" />} />
