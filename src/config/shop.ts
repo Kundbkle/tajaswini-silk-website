@@ -56,7 +56,7 @@ export const SHOP_CONFIG = {
   googleMapsUrl: '',
 
   // Base Site URL for Open Graph, Canonical tags & Share Links
-  siteUrl: (import.meta.env.VITE_SITE_URL as string) || 'https://tejaswinisilk.com'
+  siteUrl: (import.meta.env.VITE_SITE_URL as string) || 'https://www.tajaswinisilkpune.com'
 };
 
 // 11 Master Categories as required
