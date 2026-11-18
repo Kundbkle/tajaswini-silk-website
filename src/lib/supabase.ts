@@ -159,10 +159,7 @@ export async function createSaree(saree: SareeInsert): Promise<DbSaree> {
   };
 
   if (!isSupabaseConfigured || !supabase) {
-    const current = await getSarees();
-    const updated = [newSaree, ...current];
-    localStorage.setItem('tejaswini_local_sarees', JSON.stringify(updated));
-    return newSaree;
+    throw new Error('Catalogue editing requires a configured Supabase backend.');
   }
 
   const { data, error } = await supabase
@@ -181,14 +178,8 @@ export async function createSaree(saree: SareeInsert): Promise<DbSaree> {
 
 export async function updateSaree(id: string, updates: SareeUpdate): Promise<DbSaree> {
   if (!isSupabaseConfigured || !supabase) {
-    const current = await getSarees();
-    const updated = current.map((s) => (s.id === id ? { ...s, ...updates } : s));
-    localStorage.setItem('tejaswini_local_sarees', JSON.stringify(updated));
-    const target = updated.find((s) => s.id === id);
-    if (!target) throw new Error('Saree not found');
-    return target;
+    throw new Error('Catalogue editing requires a configured Supabase backend.');
   }
-
   const { data, error } = await supabase
     .from('sarees')
     .update(updates)
@@ -206,12 +197,8 @@ export async function updateSaree(id: string, updates: SareeUpdate): Promise<DbS
 
 export async function deleteSaree(id: string, imageUrls?: string[]): Promise<void> {
   if (!isSupabaseConfigured || !supabase) {
-    const current = await getSarees();
-    const updated = current.filter((s) => s.id !== id);
-    localStorage.setItem('tejaswini_local_sarees', JSON.stringify(updated));
-    return;
+    throw new Error('Catalogue editing requires a configured Supabase backend.');
   }
-
   // Delete associated images in Supabase Storage if any
   if (imageUrls && imageUrls.length > 0) {
     try {
@@ -243,14 +230,8 @@ export async function deleteSaree(id: string, imageUrls?: string[]): Promise<voi
  */
 export async function uploadSareeImage(file: Blob, fileName: string): Promise<string> {
   if (!isSupabaseConfigured || !supabase) {
-    // When Supabase is not connected in demo mode, convert blob to local object URL or data URL
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.readAsDataURL(file);
-    });
+    throw new Error('Catalogue editing requires a configured Supabase backend.');
   }
-
   const cleanName = `${Date.now()}-${fileName.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
   const { data, error } = await supabase.storage
     .from('saree-images')
