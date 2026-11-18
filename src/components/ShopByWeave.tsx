@@ -20,12 +20,12 @@ export const ShopByWeave: React.FC<ShopByWeaveProps> = ({ sarees, onSelectCatego
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="uppercase text-[11px] tracking-[0.25em] text-[#9c5961] font-semibold">Find your perfect drape</p>
-          <h2 id="weave-heading" className="font-serif text-3xl sm:text-4xl mt-3 text-[#352a2a]">Shop by Collection</h2>
+          <h2 id="weave-heading" className="font-serif text-3xl sm:text-4xl mt-3 text-[#352a2a]">Shop by Weave & Style</h2>
           <p className="text-sm text-[#796966] mt-3">Explore the weaves and styles currently available in our boutique.</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+        <div className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-5 scrollbar-thin">
           {groups.slice(0, 8).map((group) => (
-            <button type="button" key={group.category} onClick={() => onSelectCategory(group.category)} className="group text-left">
+            <button type="button" key={group.category} onClick={() => onSelectCategory(group.category)} className="group text-left shrink-0 w-[66%] sm:w-[43%] lg:w-[24%] snap-start">
               <div className="relative aspect-[3/4] overflow-hidden bg-[#f4eee8]">
                 {group.image ? <img src={group.image} alt={group.category + ' saree collection'} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" /> : null}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
