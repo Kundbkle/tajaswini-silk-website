@@ -31,6 +31,8 @@ export const ShopPage: React.FC = () => {
   const category = params.get('category') || '';
   const query = params.get('q') || '';
   const colour = params.get('colour') || '';
+  const occasion = params.get('occasion') || '';
+  const maxPrice = Number(params.get('max_price') || 0);
   const fabric = params.get('fabric') || '';
   const sort = params.get('sort') || 'newest';
   const stockOnly = params.get('stock') === '1';
@@ -39,6 +41,7 @@ export const ShopPage: React.FC = () => {
     if (value) next.set(key, value); else next.delete(key);
     setParams(next);
   };
+  const occasions = useMemo(() => [...new Set(sarees.map(s => s.occasion).filter((v):v is string => Boolean(v)))], [sarees]);
   const fabrics = useMemo(() => [...new Set(sarees.map(s => s.fabric).filter(Boolean))], [sarees]);
   const colours = useMemo(() => [...new Set(sarees.map(s => s.colour).filter(Boolean))], [sarees]);
   const results = useMemo(() => {
@@ -47,10 +50,12 @@ export const ShopPage: React.FC = () => {
       (!fabric || s.fabric === fabric) &&
       (!colour || s.colour === colour) &&
       (!stockOnly || s.in_stock) &&
+      (!occasion || s.occasion === occasion) &&
+      (!maxPrice || s.price_inr <= maxPrice) &&
       (!query || [s.name, s.category, s.fabric, s.colour, s.description].some(v => v?.toLowerCase().includes(query.toLowerCase())))
     );
     return filtered.sort((a,b) => sort === 'price-low' ? a.price_inr - b.price_inr : sort === 'price-high' ? b.price_inr - a.price_inr : (new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime()));
-  }, [sarees, category, fabric, colour, stockOnly, query, sort]);
+  }, [sarees, category, fabric, colour, occasion, maxPrice, stockOnly, query, sort]);
   const toggleWishlist = (s: DbSaree) => setWishlistIds(prev => prev.includes(s.id) ? prev.filter(id => id !== s.id) : [...prev, s.id]);
   const addCart = (s: DbSaree) => { setCart(prev => prev.some(i => i.saree.id === s.id) ? prev.map(i => i.saree.id === s.id ? {...i, quantity: i.quantity + 1} : i) : [...prev, {saree:s, quantity:1}]); setCartOpen(true); };
   const setQuantity = (id: string, delta: number) => setCart(prev => prev.map(i => i.saree.id === id ? {...i, quantity: Math.max(1, i.quantity + delta)} : i));
@@ -72,6 +77,12 @@ export const ShopPage: React.FC = () => {
             </label>
             <label className="text-xs font-semibold text-[#564442]">Colour
               <select aria-label="Colour" value={colour} onChange={e=>setFilter('colour',e.target.value)} className="mt-2 block w-full bg-white border border-[#e3d7cf] px-3 py-3 text-sm"><option value="">All Colours</option>{colours.map(c=><option key={c} value={c}>{c}</option>)}</select>
+            </label>
+            <label className="text-xs font-semibold text-[#564442]">Occasion
+              <select aria-label="Occasion" value={occasion} onChange={e=>setFilter('occasion',e.target.value)} className="mt-2 block w-full bg-white border border-[#e3d7cf] px-3 py-3 text-sm"><option value="">All Occasions</option>{occasions.map(c=><option key={c} value={c}>{c}</option>)}</select>
+            </label>
+            <label className="text-xs font-semibold text-[#564442]">Maximum Price (₹)
+              <input type="number" min="0" step="100" placeholder="Any price" aria-label="Maximum price" value={params.get('max_price') || ''} onChange={e=>setFilter('max_price',e.target.value)} className="mt-2 block w-full bg-white border border-[#e3d7cf] px-3 py-3 text-sm"/>
             </label>
             <label className="flex items-center gap-2 text-sm text-[#564442] pt-6"><input type="checkbox" checked={stockOnly} onChange={e=>setFilter('stock',e.target.checked?'1':'')} /> In stock only</label>
           </div>

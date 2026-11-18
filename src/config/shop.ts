@@ -62,6 +62,9 @@ export const SHOP_CONFIG = {
 // 11 Master Categories as required
 export const SHOP_CATEGORIES = [
   'Paithani Pure Silk',
+  'Maheshwari',
+  'Ajrakh',
+  'Narayanpet',
   'Paithani Art Silk',
   '9-Yard Paithani',
   'Pure Silk',

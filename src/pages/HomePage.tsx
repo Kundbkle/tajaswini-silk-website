@@ -5,6 +5,9 @@ import { getSarees } from '../lib/supabase';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { ShopByWeave } from '../components/ShopByWeave';
+import { SareesInMotion } from '../components/SareesInMotion';
+import { CommunitySection } from '../components/CommunitySection';
+import { ShieldCheck, PackageCheck, MapPinned, MessageCircle } from 'lucide-react';
 import { SareeCard } from '../components/SareeCard';
 import { NewArrivalsSection } from '../components/NewArrivalsSection';
 
@@ -180,6 +183,17 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
+        <SareesInMotion sarees={sarees} />
+        <section className="bg-white border-y border-[#eee3dd] py-12">
+          <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-7 text-center">
+            {[
+              { label: 'Boutique in Pune', Icon: MapPinned },
+              { label: 'Detailed Saree Specifications', Icon: ShieldCheck },
+              { label: 'WhatsApp Before You Buy', Icon: MessageCircle },
+              { label: 'Care Instructions Provided', Icon: PackageCheck }
+            ].map(({label,Icon}) => <div key={label} className="flex items-center flex-col gap-3"><Icon className="text-[#863c48] w-7 h-7" /><span className="text-xs sm:text-sm font-medium text-[#564743]">{label}</span></div>)}
+          </div>
+        </section>
         {/* Traditional Drape Guide & Motif Codex */}
         <DrapeStudio
           onExploreCategory={(cat) => setSelectedCategory(cat)}
@@ -188,6 +202,8 @@ export const HomePage: React.FC = () => {
         {/* Showroom Narrative on Kumthekar Road Sadashiv Peth */}
         <HeritageStory />
       </main>
+
+      <CommunitySection />
 
       {/* Footer */}
       <Footer onNavigate={scrollTo} />
