@@ -115,6 +115,8 @@ export const Header: React.FC<HeaderProps> = ({
 
           <Link to="/collections" className="hover:text-[#b0004a] transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4">Collections</Link>
           <Link to="/about" className="hover:text-[#b0004a] transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4">Our Story</Link>
+          <Link to="/sale" className="hover:text-[#b0004a]">Sale</Link>
+          <Link to="/upcoming-sarees" className="hover:text-[#b0004a]">Upcoming</Link>
 
           <button
             onClick={() => scrollTo('drape-studio')}
@@ -204,6 +206,8 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
           <Link to="/collections" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Collections</Link>
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Our Story</Link>
+          <Link to="/sale" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Sale</Link>
+          <Link to="/upcoming-sarees" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Upcoming</Link>
           <button
             onClick={() => scrollTo('drape-studio')}
             className="block w-full text-left py-1.5 font-medium text-[#1b1c1c] hover:text-[#b0004a]"
