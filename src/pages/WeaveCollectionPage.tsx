@@ -1,0 +1,21 @@
+import React,{useEffect,useState} from 'react';
+import {Link,useParams} from 'react-router-dom';
+import {Header} from '../components/Header';
+import {Footer} from '../components/Footer';
+import {DbSaree} from '../types/database';
+import {getSarees} from '../lib/supabase';
+
+export const WEAVE_STORIES:Record<string,{name:string;region:string;story:string;match:(s:DbSaree)=>boolean}>={
+ maheshwari:{name:'Maheshwari',region:'Maheshwar, Madhya Pradesh',story:'Maheshwari weaving is associated with Maheshwar and is known for its refined borders and balanced silk-and-cotton designs.',match:s=>s.category==='Maheshwari'},
+ paithani:{name:'Paithani',region:'Maharashtra',story:'Paithani is a celebrated weaving tradition of Maharashtra, known for rich colour, decorative motifs and distinctive pallus.',match:s=>s.category.toLowerCase().includes('paithani')},
+ ajrakh:{name:'Ajrakh',region:'Kutch, Gujarat and Sindh',story:'Ajrakh is a traditional resist and block-printing craft known for layered geometric patterns and indigo-rich palettes.',match:s=>s.category==='Ajrakh'},
+ narayanpet:{name:'Narayanpet',region:'Telangana',story:'Narayanpet weaving is associated with Telangana and is recognised for its traditional borders and restrained elegance.',match:s=>s.category==='Narayanpet'}
+};
+export const WeaveCollectionPage:React.FC=()=>{
+ const {weave}=useParams<{weave:string}>();
+ const item=WEAVE_STORIES[weave||''];
+ const [products,setProducts]=useState<DbSaree[]>([]);
+ useEffect(()=>{document.title=(item?.name||'Collection')+' Sarees | Tejaswini Silk';getSarees().then(setProducts).catch(console.error)},[weave]);
+ const sarees=item?products.filter(item.match):[];
+ return <div className="min-h-screen bg-[#fffdf9]"><Header cartCount={0} wishlistCount={0} onOpenCart={()=>window.location.assign('/shop')} onOpenWishlist={()=>window.location.assign('/shop')}/><main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20"><nav className="text-xs text-[#856d65] mb-10"><Link to="/">Home</Link> / <Link to="/collections">Collections</Link> / {item?.name||'Collection'}</nav>{item?<><div className="grid md:grid-cols-2 gap-10 mb-14 items-center"><div><p className="uppercase tracking-[.23em] text-xs text-[#965662]">Explore the heritage</p><h1 className="font-serif text-4xl md:text-5xl text-[#382d2c] mt-3">{item.name} Sarees</h1><p className="mt-3 text-xs uppercase tracking-wider text-[#98746a]">{item.region}</p><p className="mt-6 leading-8 text-[#74615b]">{item.story}</p><p className="mt-4 text-sm text-[#8f6963]">This is background about the craft tradition, not verified provenance for any individual product. Product origins are shown separately where documented.</p></div><div className="bg-[#efe8e1] min-h-[280px] md:min-h-[400px]">{sarees.find(s=>s.images?.[0])?<img src={sarees.find(s=>s.images?.[0])?.images[0]} alt={item.name+' saree'} className="w-full h-[400px] object-cover"/>:<div className="flex items-center justify-center h-full min-h-[300px] text-[#806962] text-sm">Collection photography coming soon</div>}</div></div><h2 className="font-serif text-3xl mb-6">Shop {item.name}</h2>{sarees.length?<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">{sarees.map(s=><Link key={s.id} to={'/saree/'+encodeURIComponent(s.id)} className="border border-[#ece0d8] bg-white"><img src={s.images?.[0]||'/images/hero_paithani_bridal_1793599014021.jpg'} alt={s.name} loading="lazy" className="w-full aspect-[3/4] object-cover"/><div className="p-4"><h3 className="font-serif text-lg">{s.name}</h3><p className="mt-2 text-sm">₹{s.price_inr.toLocaleString('en-IN')}</p></div></Link>)}</div>:<div className="bg-[#f8f3eb] p-12 text-center"><p className="text-[#765e59]">No {item.name} sarees have been listed yet.</p><Link className="underline inline-block mt-5" to="/shop">View available sarees</Link></div>}</>:<div className="text-center py-16"><h1 className="font-serif text-3xl">Collection not found</h1><Link to="/collections" className="inline-block mt-6 underline">All collections</Link></div>}</main><Footer/></div>;
+};
