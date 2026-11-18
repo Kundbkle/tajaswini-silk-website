@@ -10,6 +10,12 @@ export interface DbSaree {
   category: string;
   fabric: string; // 'Pure Silk' | 'Art Silk' | 'Cotton' | 'Silk Blend'
   price_inr: number;
+  sale_price_inr?: number | null;
+  is_upcoming?: boolean;
+  video_url?: string | null;
+  origin_region?: string | null;
+  weaver_community?: string | null;
+  occasion?: string | null;
   length: string; // '5.5 m' | '6.3 m (with blouse piece)' | '9-Yard (Nauvari - 8.2 m)'
   colour: string;
   description: string;
