@@ -112,7 +112,7 @@ CREATE POLICY "Public can view saree images"
 ON storage.objects 
 FOR SELECT 
 TO public 
-USING (bucket_id = 'saree-images' AND public.is_catalog_admin());
+USING (bucket_id = 'saree-images');
 
 -- Only authenticated owner can upload photos
 DROP POLICY IF EXISTS "Authenticated users can upload saree images" ON storage.objects;
@@ -128,7 +128,8 @@ CREATE POLICY "Authenticated users can update saree images"
 ON storage.objects 
 FOR UPDATE 
 TO authenticated 
-USING (bucket_id = 'saree-images' AND public.is_catalog_admin());
+USING (bucket_id = 'saree-images' AND public.is_catalog_admin())
+WITH CHECK (bucket_id = 'saree-images' AND public.is_catalog_admin());
 
 -- Only authenticated owner can delete photos
 DROP POLICY IF EXISTS "Authenticated users can delete saree images" ON storage.objects;
