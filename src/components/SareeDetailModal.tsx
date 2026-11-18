@@ -203,6 +203,23 @@ export const SareeDetailModal: React.FC<SareeDetailModalProps> = ({
               {saree.description}
             </div>
 
+            {(saree.origin_region || saree.weaver_community) && (
+              <div className="border border-[#dfcfc7] bg-[#fcf7f1] p-4 text-sm">
+                <h2 className="font-serif text-xl text-[#633c43] mb-2">Provenance</h2>
+                {saree.origin_region && <p><strong>Region:</strong> {saree.origin_region}</p>}
+                {saree.weaver_community && <p className="mt-1"><strong>Weaver community:</strong> {saree.weaver_community}</p>}
+              </div>
+            )}
+            {saree.video_url && /^https:\/\//.test(saree.video_url) && (
+              <div className="pt-3"><h2 className="font-serif text-xl mb-3">Watch the Drape</h2>
+                <video controls playsInline preload="none" poster={images[0]} className="w-full max-h-[380px] bg-[#e8ddd5] rounded"><source src={saree.video_url}/></video>
+              </div>
+            )}
+            <div className="border border-[#e7dbd3] p-3 text-xs text-[#6d5852]">
+              Delivery and returns are confirmed directly by the boutique before payment.
+              <a href="/policies" className="underline ml-1">View store policies</a>
+            </div>
+
             {/* Care Instructions */}
             {saree.care_instructions && (
               <div className="text-xs text-[#5a4044] bg-[#ffd9de]/20 p-3 rounded border border-[#e3bdc3]/40">
@@ -253,13 +270,17 @@ export const SareeDetailModal: React.FC<SareeDetailModalProps> = ({
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
         <a 
-          href="/#catalog"
+          href="/shop"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#b0004a] mb-6 hover:underline"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Sarees</span>
         </a>
         {content}
+        <div className="md:hidden sticky bottom-0 bg-white border-t border-[#e5d7cf] p-3 flex gap-2 z-20">
+          {saree.in_stock && <button onClick={() => onAddToCart(saree)} className="flex-1 bg-[#7c303c] text-white py-3 text-xs font-semibold">Add to Bag</button>}
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#e9f6e9] text-[#165c29] text-center py-3 text-xs font-semibold">WhatsApp</a>
+        </div>
       </div>
     );
   }
