@@ -7,6 +7,8 @@ import { ShopPage } from './pages/ShopPage';
 import { CollectionsPage } from './pages/CollectionsPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { SpecialCollectionPage } from './pages/SpecialCollectionPage';
+import { PoliciesPage } from './pages/PoliciesPage';
 
 export default function App() {
   return (
@@ -19,6 +21,9 @@ export default function App() {
         <Route path="/collections" element={<CollectionsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/sale" element={<SpecialCollectionPage type="sale" />} />
+        <Route path="/upcoming-sarees" element={<SpecialCollectionPage type="upcoming" />} />
+        <Route path="/policies" element={<PoliciesPage />} />
 
         {/* Shareable Saree Detail Page */}
         <Route path="/saree/:id" element={<SareeDetailPage />} />
