@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://tejaswinisilk.com/sitemap.xml
+Sitemap: https://www.tajaswinisilkpune.com/sitemap.xml
