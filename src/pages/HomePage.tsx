@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { DbSaree } from '../types/database';
 import { getSarees } from '../lib/supabase';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
+import { ShopByWeave } from '../components/ShopByWeave';
+import { SareeCard } from '../components/SareeCard';
 import { NewArrivalsSection } from '../components/NewArrivalsSection';
-import { SareeCatalog } from '../components/SareeCatalog';
+
 import { DrapeStudio } from '../components/DrapeStudio';
 import { HeritageStory } from '../components/HeritageStory';
 import { Footer } from '../components/Footer';
@@ -17,6 +20,7 @@ import { MessageSquare, Check } from 'lucide-react';
 import { SHOP_CONFIG } from '../config/shop';
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   const [sarees, setSarees] = useState<DbSaree[]>([]);
   const [loadingSarees, setLoadingSarees] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -150,9 +154,11 @@ export const HomePage: React.FC = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <Hero
-          onExploreCollection={() => scrollTo('catalog')}
+          onExploreCollection={() => navigate('/shop')}
           onOpenConcierge={() => setIsConciergeOpen(true)}
         />
+
+        <ShopByWeave sarees={sarees} onSelectCategory={(cat) => navigate('/shop?category=' + encodeURIComponent(cat))} />
 
         {/* New Arrivals Section driven by is_new_arrival */}
         <NewArrivalsSection
@@ -161,19 +167,18 @@ export const HomePage: React.FC = () => {
           onToggleWishlist={handleToggleWishlist}
           onQuickView={(saree) => setSelectedSareeForDetail(saree)}
           onAddToCart={handleAddToCart}
-          onViewAll={() => scrollTo('catalog')}
+          onViewAll={() => navigate('/shop')}
         />
 
-        {/* Full Catalog with multi-attribute filtering */}
-        <SareeCatalog
-          sarees={sarees}
-          isLoading={loadingSarees}
-          wishlistIds={wishlistIds}
-          initialCategory={selectedCategory}
-          onToggleWishlist={handleToggleWishlist}
-          onQuickView={(saree) => setSelectedSareeForDetail(saree)}
-          onAddToCart={handleAddToCart}
-        />
+        <section id="catalog" className="bg-[#fffdf9] py-16 border-t border-[#eee4dd]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between gap-4 mb-9">
+              <div><p className="text-xs uppercase tracking-[.2em] text-[#a25c65] mb-2">The complete collection</p><h2 className="font-serif text-3xl sm:text-4xl text-[#36292b]">Every saree, one place</h2></div>
+              <Link to="/shop" className="text-sm underline underline-offset-4 text-[#7c303c]">View all sarees →</Link>
+            </div>
+            {sarees.length ? <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">{sarees.slice(0,4).map(s=><SareeCard key={s.id} saree={s} isWishlisted={wishlistIds.includes(s.id)} onToggleWishlist={handleToggleWishlist} onQuickView={setSelectedSareeForDetail} onAddToCart={handleAddToCart}/>)}</div> : <p className="text-sm text-[#786964]">Our catalogue will appear here when products are published.</p>}
+          </div>
+        </section>
 
         {/* Traditional Drape Guide & Motif Codex */}
         <DrapeStudio
