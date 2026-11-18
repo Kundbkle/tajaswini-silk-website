@@ -1,46 +1,26 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { DbSaree } from '../types/database';
-import { SHOP_CATEGORIES } from '../config/shop';
+import {Link} from 'react-router-dom';
+import {ArrowUpRight} from 'lucide-react';
+import {DbSaree} from '../types/database';
 
-interface ShopByWeaveProps {
-  sarees: DbSaree[];
-  onSelectCategory: (category: string) => void;
-}
-export const ShopByWeave: React.FC<ShopByWeaveProps> = ({ sarees, onSelectCategory }) => {
-  const groups = SHOP_CATEGORIES.map((category) => {
-    const matching = sarees.filter((saree) => saree.category === category);
-    const withImage = matching.find((saree) => saree.images?.[0]);
-    return { category, count: matching.length, image: withImage?.images[0] };
-  }).filter((group) => group.count > 0);
-
-  if (!groups.length) return null;
-  return (
-    <section className="bg-white py-16 md:py-20" aria-labelledby="weave-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="uppercase text-[11px] tracking-[0.25em] text-[#9c5961] font-semibold">Find your perfect drape</p>
-          <h2 id="weave-heading" className="font-serif text-3xl sm:text-4xl mt-3 text-[#352a2a]">Shop by Weave & Style</h2>
-          <p className="text-sm text-[#796966] mt-3">Explore the weaves and styles currently available in our boutique.</p>
-        </div>
-        <div className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-5 scrollbar-thin">
-          {groups.slice(0, 8).map((group) => (
-            <button type="button" key={group.category} onClick={() => onSelectCategory(group.category)} className="group text-left shrink-0 w-[66%] sm:w-[43%] lg:w-[24%] snap-start">
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#f4eee8]">
-                {group.image ? <img src={group.image} alt={group.category + ' saree collection'} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" /> : null}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white flex justify-between items-end gap-2">
-                  <div>
-                    <p className="font-serif text-lg sm:text-xl leading-snug">{group.category}</p>
-                    <p className="text-[11px] text-white/85 mt-1">{group.count} {group.count === 1 ? 'saree' : 'sarees'}</p>
-                  </div>
-                  <ArrowUpRight size={19} className="shrink-0 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export const ShopByWeave:React.FC<{sarees:DbSaree[];onSelectCategory?:(category:string)=>void}>=({sarees})=>{
+ const groups=[
+  {slug:'maheshwari',name:'Maheshwari',description:'Refined borders and timeless elegance.',matches:(s:DbSaree)=>s.category==='Maheshwari'},
+  {slug:'paithani',name:'Paithani',description:'Rich colour and Maharashtra’s heritage motifs.',matches:(s:DbSaree)=>s.category.toLowerCase().includes('paithani')},
+  {slug:'ajrakh',name:'Ajrakh',description:'Layered patterns and a storied printing craft.',matches:(s:DbSaree)=>s.category==='Ajrakh'},
+  {slug:'narayanpet',name:'Narayanpet',description:'Traditional borders and everyday grace.',matches:(s:DbSaree)=>s.category==='Narayanpet'}
+ ];
+ return <section className="bg-white py-16 md:py-20" aria-labelledby="weave-heading"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <p className="uppercase tracking-[.24em] text-xs font-semibold text-[#a15a63] text-center">Traditional Indian weaving</p>
+  <h2 id="weave-heading" className="font-serif text-center text-3xl md:text-4xl mt-3 text-[#3b2c2c]">Shop by Weave</h2>
+  <p className="text-sm text-[#796661] mt-4 text-center">Learn about each weave and explore our listed pieces.</p>
+  <div className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-5 mt-10">
+  {groups.map(g=>{const found=sarees.filter(g.matches),photo=found.find(s=>s.images?.[0])?.images[0];return <Link key={g.slug} to={'/collections/'+g.slug} className="w-[68%] sm:w-[43%] lg:w-[24%] shrink-0 snap-start group">
+   <div className="relative aspect-[3/4] bg-gradient-to-br from-[#ead8cb] via-[#efe8e0] to-[#c9a68f] overflow-hidden">{photo ? <img src={photo} alt={g.name+' sarees in our catalogue'} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/> : <span className="absolute inset-0 flex items-center justify-center text-[#845f53] font-serif text-3xl"> {g.name} </span>}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
+    <div className="absolute bottom-5 left-5 right-5 text-white"><p className="font-serif text-2xl">{g.name}</p><p className="text-xs mt-1">{found.length?found.length+' listed sarees':'Story & collection'}</p></div>
+   </div><div className="flex items-start justify-between gap-2 mt-3"><p className="text-sm text-[#765954]">{g.description}</p><ArrowUpRight className="shrink-0 text-[#8d4651]" size={18}/></div>
+  </Link>})}
+  </div>
+ </div></section>;
 };
