@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DbSaree } from '../types/database';
 import { X, Heart, ShoppingBag, MessageSquare, Share2, Check, ArrowLeft, MapPin } from 'lucide-react';
 import { buildWhatsAppProductEnquiry, SHOP_CONFIG } from '../config/shop';
@@ -20,14 +20,17 @@ export const SareeDetailModal: React.FC<SareeDetailModalProps> = ({
   onAddToCart,
   isStandalonePage = false
 }) => {
+  const [selectedImage, setSelectedImage] = useState<string>('');
+  const [copiedLink, setCopiedLink] = useState(false);
+  useEffect(() => {
+    setSelectedImage(saree?.images?.[0] || '/images/hero_paithani_bridal_1793599014021.jpg');
+  }, [saree?.id]);
+
   if (!saree) return null;
 
   const images = saree.images && saree.images.length > 0
     ? saree.images
     : ['/images/hero_paithani_bridal_1793599014021.jpg'];
-
-  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
-  const [copiedLink, setCopiedLink] = useState(false);
 
   const whatsappUrl = buildWhatsAppProductEnquiry(saree);
 
@@ -248,6 +251,9 @@ export const SareeDetailModal: React.FC<SareeDetailModalProps> = ({
               <span>Enquire on WhatsApp (+91 {SHOP_CONFIG.whatsapp})</span>
             </a>
 
+            {!saree.in_stock && (
+              <a href={`https://wa.me/91${SHOP_CONFIG.whatsapp}?text=${encodeURIComponent('Hello, please notify me when ' + saree.name + ' is available again.')}`} target="_blank" rel="noopener noreferrer" className="block w-full border border-[#7c303c] text-[#7c303c] py-3 text-center text-sm font-semibold">Request restock update on WhatsApp</a>
+            )}
             {saree.in_stock && (
               <button
                 onClick={() => onAddToCart(saree)}
