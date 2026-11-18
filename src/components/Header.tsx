@@ -29,8 +29,11 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#fbf9f8]/95 backdrop-blur-md border-b border-[#e3bdc3]/40 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#e7dcd5] transition-colors">
+      <div className="bg-[#6f303d] text-white text-center px-3 py-2 text-[10px] sm:text-xs font-medium tracking-wide">
+        Browse traditional Paithani & silk sarees · Visit our Pune boutique · WhatsApp for personal assistance
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[76px] flex items-center justify-between gap-6">
         
         {/* Zone 1: Logo + Brand + Marathi Tagline */}
         <a 
