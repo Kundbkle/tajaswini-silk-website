@@ -6,6 +6,7 @@ import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { ShopByWeave } from '../components/ShopByWeave';
 import { SareesInMotion } from '../components/SareesInMotion';
+import { CommunitySection } from '../components/CommunitySection';
 import { ShieldCheck, PackageCheck, MapPinned, MessageCircle } from 'lucide-react';
 import { SareeCard } from '../components/SareeCard';
 import { NewArrivalsSection } from '../components/NewArrivalsSection';
@@ -201,6 +202,8 @@ export const HomePage: React.FC = () => {
         {/* Showroom Narrative on Kumthekar Road Sadashiv Peth */}
         <HeritageStory />
       </main>
+
+      <CommunitySection />
 
       {/* Footer */}
       <Footer onNavigate={scrollTo} />
