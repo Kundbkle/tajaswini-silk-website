@@ -8,11 +8,13 @@ import { CollectionsPage } from './pages/CollectionsPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { SpecialCollectionPage } from './pages/SpecialCollectionPage';
+import { RouteSeo } from './components/RouteSeo';
 import { PoliciesPage } from './pages/PoliciesPage';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteSeo />
       <Routes>
         {/* Main Storefront */}
         <Route path="/" element={<HomePage />} />
