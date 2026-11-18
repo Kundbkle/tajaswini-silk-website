@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Heart, Menu, X, MessageSquare, Phone } from 'lucide-react';
 import { SHOP_CONFIG, SHOP_CATEGORIES } from '../config/shop';
 
@@ -17,19 +18,23 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenWishlist,
   onSelectCategory
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
     setMobileMenuOpen(false);
+    if (id === 'catalog') { navigate('/shop'); return; }
+    if (id === 'new-arrivals') { navigate('/shop?sort=newest'); return; }
+    if (id === 'contact') { navigate('/contact'); return; }
+    if (id === 'drape-studio' && location.pathname !== '/') { navigate('/#drape-studio'); return; }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#fbf9f8]/95 backdrop-blur-md border-b border-[#e3bdc3]/40 transition-colors">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#e3bdc3]/40 transition-colors">
+      <div className="bg-[#702b3a] px-3 py-2 text-center text-white text-[10px] sm:text-xs tracking-wide">Traditional Paithani & Silk Sarees · Visit our Pune boutique · Enquire on WhatsApp</div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
         {/* Zone 1: Logo + Brand + Marathi Tagline */}
@@ -96,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
                     key={cat}
                     onClick={() => {
                       if (onSelectCategory) onSelectCategory(cat);
-                      scrollTo('catalog');
+                      navigate('/shop?category=' + encodeURIComponent(cat));
                       setCategoriesDropdownOpen(false);
                     }}
                     className="block w-full text-left px-4 py-2 hover:bg-[#ffd9de]/30 hover:text-[#b0004a] transition-colors"
@@ -108,6 +113,11 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
+          <Link to="/collections" className="hover:text-[#b0004a] transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4">Collections</Link>
+          <Link to="/about" className="hover:text-[#b0004a] transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4">Our Story</Link>
+
+          <Link to="/collections" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Collections</Link>
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-medium">Our Story</Link>
           <button
             onClick={() => scrollTo('drape-studio')}
             className="hover:text-[#b0004a] transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4"
