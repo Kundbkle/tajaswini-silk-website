@@ -84,7 +84,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
         </div>
 
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3 border-b border-[#303030] py-5 text-sm text-white/85">
-          <Link to="/">Home</Link><Link to="/shop">All Sarees</Link><Link to="/collections">Collections</Link><Link to="/about">Our Story</Link><Link to="/contact">Contact</Link>
+          <Link to="/">Home</Link><Link to="/shop">All Sarees</Link><Link to="/collections">Collections</Link><Link to="/about">Our Story</Link><Link to="/contact">Contact</Link><Link to="/sale">Sale</Link><Link to="/upcoming-sarees">Upcoming</Link><Link to="/policies">Policies</Link>
         </nav>
         {/* Middle Row: Store Location, Owners, Hours & Links */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-b border-[#303030] text-xs">
