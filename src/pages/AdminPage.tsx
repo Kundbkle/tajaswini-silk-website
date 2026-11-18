@@ -68,6 +68,12 @@ export const AdminPage: React.FC = () => {
   const [category, setCategory] = useState<string>(SHOP_CATEGORIES[0]);
   const [fabric, setFabric] = useState<string>(FABRICS[0]);
   const [priceInr, setPriceInr] = useState<number | ''>('');
+  const [salePrice, setSalePrice] = useState<number | ''>('');
+  const [isUpcoming, setIsUpcoming] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
+  const [originRegion, setOriginRegion] = useState('');
+  const [weaverCommunity, setWeaverCommunity] = useState('');
+  const [occasion, setOccasion] = useState('');
   const [length, setLength] = useState<string>(LENGTH_OPTIONS[1]);
   const [colour, setColour] = useState('');
   const [description, setDescription] = useState('');
@@ -181,6 +187,12 @@ export const AdminPage: React.FC = () => {
     setCategory(SHOP_CATEGORIES[0]);
     setFabric(FABRICS[0]);
     setPriceInr('');
+    setSalePrice('');
+    setIsUpcoming(false);
+    setVideoUrl('');
+    setOriginRegion('');
+    setWeaverCommunity('');
+    setOccasion('');
     setLength(LENGTH_OPTIONS[1]);
     setColour('');
     setDescription('');
@@ -203,6 +215,12 @@ export const AdminPage: React.FC = () => {
     setCategory(saree.category);
     setFabric(saree.fabric);
     setPriceInr(saree.price_inr);
+    setSalePrice(saree.sale_price_inr ?? '');
+    setIsUpcoming(saree.is_upcoming ?? false);
+    setVideoUrl(saree.video_url || '');
+    setOriginRegion(saree.origin_region || '');
+    setWeaverCommunity(saree.weaver_community || '');
+    setOccasion(saree.occasion || '');
     setLength(saree.length);
     setColour(saree.colour);
     setDescription(saree.description);
@@ -301,6 +319,14 @@ export const AdminPage: React.FC = () => {
       setFormError('Please enter a valid Price in INR.');
       return;
     }
+    if (salePrice !== '' && Number(salePrice) >= Number(priceInr)) {
+      setFormError('Sale price must be below the regular price.');
+      return;
+    }
+    if (videoUrl.trim() && !/^https:\/\//.test(videoUrl.trim())) {
+      setFormError('Video URL must start with https://');
+      return;
+    }
     if (photos.length === 0) {
       setFormError('Please upload at least one photo of the saree.');
       return;
@@ -331,6 +357,12 @@ export const AdminPage: React.FC = () => {
         category,
         fabric,
         price_inr: Number(priceInr),
+        sale_price_inr: salePrice === '' ? null : Number(salePrice),
+        is_upcoming: isUpcoming,
+        video_url: videoUrl.trim() || null,
+        origin_region: originRegion.trim() || null,
+        weaver_community: weaverCommunity.trim() || null,
+        occasion: occasion.trim() || null,
         length,
         colour: colour.trim() || 'Multicolour',
         description: description.trim(),
@@ -979,6 +1011,25 @@ export const AdminPage: React.FC = () => {
                     className="w-full px-3 py-2 text-xs bg-white border border-[#e3bdc3] rounded focus:outline-none focus:border-[#b0004a] font-mono"
                   />
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-[#e3bdc3]/40 pt-4">
+                <label className="text-xs font-semibold">Optional sale price (₹)
+                  <input type="number" min="0" value={salePrice} onChange={e=>setSalePrice(e.target.value?Number(e.target.value):'')} placeholder="Leave empty if not on sale" className="block w-full border border-[#e3bdc3] p-2 mt-2"/>
+                </label>
+                <label className="text-xs font-semibold">Occasion
+                  <input type="text" value={occasion} onChange={e=>setOccasion(e.target.value)} placeholder="e.g. Wedding" className="block w-full border border-[#e3bdc3] p-2 mt-2"/>
+                </label>
+                <label className="text-xs font-semibold">Origin region (verified)
+                  <input type="text" value={originRegion} onChange={e=>setOriginRegion(e.target.value)} placeholder="e.g. Paithan, Maharashtra" className="block w-full border border-[#e3bdc3] p-2 mt-2"/>
+                </label>
+                <label className="text-xs font-semibold">Weaver community (verified)
+                  <input type="text" value={weaverCommunity} onChange={e=>setWeaverCommunity(e.target.value)} placeholder="Only if documented" className="block w-full border border-[#e3bdc3] p-2 mt-2"/>
+                </label>
+                <label className="text-xs font-semibold sm:col-span-2">Product video HTTPS URL
+                  <input type="url" value={videoUrl} onChange={e=>setVideoUrl(e.target.value)} placeholder="https://..." className="block w-full border border-[#e3bdc3] p-2 mt-2"/>
+                </label>
+                <label className="text-xs font-semibold flex gap-2 items-center sm:col-span-2"><input type="checkbox" checked={isUpcoming} onChange={e=>setIsUpcoming(e.target.checked)}/> Show in Upcoming Sarees</label>
               </div>
 
               {/* Length & Colour */}
