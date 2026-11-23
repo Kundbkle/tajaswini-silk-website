@@ -167,7 +167,7 @@
 
 .ts-floral-bg {
   background-color: #fceaf2;
-  background-image: linear-gradient(100deg, rgba(255,249,253,.94), rgba(255,245,251,.89)), url('/tejaswini-floral-pattern.svg');
+  background-image: linear-gradient(100deg, rgba(255,249,253,.94), rgba(255,245,251,.89)), url('/tejaswini-official-pattern.svg');
   background-size: auto, 230px 230px;
   background-repeat: repeat;
 }
@@ -231,3 +231,22 @@
   .ts-brand-feather { width: 27px; height: 27px; }
   .ts-hero .ts-hero-photo { height: 240px; }
 }
+
+
+/* The genuine Marathi logo and floral artwork extracted from Tejaswini's PDF. */
+.ts-brand { display: inline-flex; flex-shrink: 0; max-width: none; }
+.ts-brand-image { display: block; width: 165px; height: auto; max-width: 100%; object-fit: contain; }
+.ts-footer .ts-brand-image { width: 252px; filter: brightness(0) invert(1); }
+@media (min-width: 400px) { .ts-brand-image { width: 192px; } }
+@media (min-width: 640px) { .ts-brand-image { width: 242px; } }
+@media (min-width: 1280px) { .ts-brand-image { width: 260px; } }
+.ts-floral-bg {
+  background-image: linear-gradient(100deg,rgba(255,249,253,.89),rgba(255,245,251,.84)),url('/tejaswini-official-pattern.svg');
+  background-size: auto, 235px 235px;
+}
+.ts-spotlight-art {
+  background-image: url('/tejaswini-official-pattern.svg');
+  background-size: 240px 240px;
+  opacity: .11;
+}
+.ts-brand-cta:hover .ts-brand-cta-icon { transform: rotate(-12deg); }
