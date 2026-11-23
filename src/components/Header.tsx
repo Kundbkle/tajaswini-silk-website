@@ -28,19 +28,19 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
-    'text-sm whitespace-nowrap transition-colors hover:text-[#8b3c49] ' +
-    (isActive ? 'text-[#7a2e3d] font-semibold border-b-2 border-[#7a2e3d] pb-1' : 'text-[#534343]');
+    'text-sm whitespace-nowrap transition-colors hover:text-[#b70b6a] ' +
+    (isActive ? 'text-[#a40860] font-semibold border-b-2 border-[#a40860] pb-1' : 'text-[#534343]');
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#e7d8cf]">
-      <div className="bg-[#702b3a] px-3 py-2 text-center text-white text-[10px] sm:text-xs tracking-wide">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#f1d5e2]">
+      <div className="bg-[#a40860] px-3 py-2 text-center text-white text-[10px] sm:text-xs tracking-wide">
         Traditional Paithani & Silk Sarees · Visit our Pune boutique · Enquire on WhatsApp
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[78px] py-3 flex items-center justify-between gap-3">
         <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMobileMenuOpen(false)}>
           <img src="/logo.png" alt={SHOP_CONFIG.name} width="43" height="43" className="w-10 h-10 sm:w-11 sm:h-11 object-contain" />
           <div>
-            <span className="block font-serif font-bold text-lg sm:text-xl text-[#7c303c] leading-tight">{SHOP_CONFIG.name}</span>
+            <span className="block font-serif font-bold text-lg sm:text-xl text-[#d80880] leading-tight">{SHOP_CONFIG.name}</span>
             <span className="font-devanagari hidden sm:block text-[10px] text-[#806361] mt-1">{SHOP_CONFIG.tagline}</span>
           </div>
         </Link>
@@ -54,13 +54,13 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-          <button type="button" onClick={onOpenWishlist} aria-label="Wishlist" className="relative p-2 text-[#563f42] hover:text-[#7c303c]">
+          <button type="button" onClick={onOpenWishlist} aria-label="Wishlist" className="relative p-2 text-[#563f42] hover:text-[#a40860]">
             <Heart size={20} />
-            {wishlistCount > 0 && <span className="absolute -top-1 -right-1 bg-[#7c303c] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>}
+            {wishlistCount > 0 && <span className="absolute -top-1 -right-1 bg-[#a40860] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>}
           </button>
-          <button type="button" onClick={onOpenCart} aria-label="Shopping bag" className="relative p-2 text-[#563f42] hover:text-[#7c303c]">
+          <button type="button" onClick={onOpenCart} aria-label="Shopping bag" className="relative p-2 text-[#563f42] hover:text-[#a40860]">
             <ShoppingBag size={20} />
-            {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-[#7c303c] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>}
+            {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-[#a40860] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>}
           </button>
           <a href={SHOP_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp enquiry"
              className="p-2 sm:px-3.5 sm:py-2 bg-[#25d366] text-white inline-flex items-center gap-1.5 rounded-sm">
@@ -73,10 +73,10 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {mobileMenuOpen && <nav id="mobile-shop-menu" aria-label="Mobile navigation" className="lg:hidden bg-[#fffdf9] border-t border-[#e9dcd3] px-5 py-3 shadow-lg">
+      {mobileMenuOpen && <nav id="mobile-shop-menu" aria-label="Mobile navigation" className="lg:hidden bg-[#fffbfd] border-t border-[#f1d5e2] px-5 py-3 shadow-lg">
         {NAV_ITEMS.map(item =>
           <NavLink key={item.path} to={item.path} end={item.path === '/'} className={({ isActive }) =>
-            'block py-3 border-b border-[#eee4dd] text-sm font-medium ' + (isActive ? 'text-[#7c303c]' : 'text-[#5b4745]')}
+            'block py-3 border-b border-[#eee4dd] text-sm font-medium ' + (isActive ? 'text-[#a40860]' : 'text-[#5b4745]')}
             onClick={() => setMobileMenuOpen(false)}>{item.label}</NavLink>
         )}
       </nav>}
