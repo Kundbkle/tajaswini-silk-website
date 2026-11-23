@@ -16,7 +16,7 @@ export const CollectionSpotlight:React.FC<{sarees:DbSaree[]}> = ({sarees}) => {
      </div>
      <div className="relative min-h-[215px] sm:min-h-[320px] md:min-h-[340px] flex justify-center items-center">
        {picks.length>0 ? picks.map((s,i)=>{
-         const positions=['ts-stack-left','ts-stack-center','ts-stack-right'];
+         const positions = picks.length === 1 ? ['ts-stack-center'] : picks.length === 2 ? ['ts-stack-left','ts-stack-right'] : ['ts-stack-left','ts-stack-center','ts-stack-right'];
          return <Link key={s.id} to={'/saree/'+encodeURIComponent(s.id)} className={`ts-stack-card ${positions[i]} group absolute w-[36%] max-w-[205px] aspect-[3/4] bg-white p-1.5 sm:p-2 shadow-2xl border border-white/70`} aria-label={'View '+s.name}>
            <img src={s.images[0]} alt={s.name} loading="lazy" className="w-full h-full object-cover"/>
            <span className="absolute inset-x-1.5 sm:inset-x-2 bottom-1.5 sm:bottom-2 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 px-2 sm:px-3 pb-2 text-left">
