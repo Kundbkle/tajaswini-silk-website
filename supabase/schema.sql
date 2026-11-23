@@ -37,6 +37,26 @@ CREATE INDEX IF NOT EXISTS idx_sarees_created_at ON public.sarees (created_at DE
 -- 4. Enable Row Level Security (RLS) on 'sarees'
 ALTER TABLE public.sarees ENABLE ROW LEVEL SECURITY;
 
+-- Only the explicitly approved owner may modify catalogue records.
+-- Add the owner's Supabase Auth user UUID to this table using the SQL Editor.
+CREATE TABLE IF NOT EXISTS public.admin_users (
+  user_id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE
+);
+ALTER TABLE public.admin_users ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON public.admin_users FROM anon, authenticated;
+
+CREATE OR REPLACE FUNCTION public.is_catalog_admin()
+RETURNS BOOLEAN
+LANGUAGE sql STABLE SECURITY DEFINER
+SET search_path = ''
+AS $$
+  SELECT EXISTS (
+    SELECT 1 FROM public.admin_users WHERE user_id = (SELECT auth.uid())
+  );
+$$;
+REVOKE ALL ON FUNCTION public.is_catalog_admin() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.is_catalog_admin() TO authenticated;
+
 -- 5. Define Table RLS Policies
 -- Policy: Public can view all sarees
 DROP POLICY IF EXISTS "Public can view all sarees" ON public.sarees;
@@ -52,7 +72,7 @@ CREATE POLICY "Authenticated users can insert sarees"
 ON public.sarees 
 FOR INSERT 
 TO authenticated 
-WITH CHECK (true);
+WITH CHECK (public.is_catalog_admin());
 
 -- Policy: Authenticated owner can update sarees
 DROP POLICY IF EXISTS "Authenticated users can update sarees" ON public.sarees;
@@ -60,8 +80,8 @@ CREATE POLICY "Authenticated users can update sarees"
 ON public.sarees 
 FOR UPDATE 
 TO authenticated 
-USING (true) 
-WITH CHECK (true);
+USING (public.is_catalog_admin()) 
+WITH CHECK (public.is_catalog_admin());
 
 -- Policy: Authenticated owner can delete sarees
 DROP POLICY IF EXISTS "Authenticated users can delete sarees" ON public.sarees;
@@ -69,7 +89,7 @@ CREATE POLICY "Authenticated users can delete sarees"
 ON public.sarees 
 FOR DELETE 
 TO authenticated 
-USING (true);
+USING (public.is_catalog_admin());
 
 -- 6. Setup Supabase Storage Bucket 'saree-images'
 -- Note: 'storage.buckets' table is provided natively by Supabase
@@ -100,7 +120,7 @@ CREATE POLICY "Authenticated users can upload saree images"
 ON storage.objects 
 FOR INSERT 
 TO authenticated 
-WITH CHECK (bucket_id = 'saree-images');
+WITH CHECK (bucket_id = 'saree-images' AND public.is_catalog_admin());
 
 -- Only authenticated owner can update photos
 DROP POLICY IF EXISTS "Authenticated users can update saree images" ON storage.objects;
@@ -108,7 +128,8 @@ CREATE POLICY "Authenticated users can update saree images"
 ON storage.objects 
 FOR UPDATE 
 TO authenticated 
-USING (bucket_id = 'saree-images');
+USING (bucket_id = 'saree-images' AND public.is_catalog_admin())
+WITH CHECK (bucket_id = 'saree-images' AND public.is_catalog_admin());
 
 -- Only authenticated owner can delete photos
 DROP POLICY IF EXISTS "Authenticated users can delete saree images" ON storage.objects;
@@ -116,7 +137,7 @@ CREATE POLICY "Authenticated users can delete saree images"
 ON storage.objects 
 FOR DELETE 
 TO authenticated 
-USING (bucket_id = 'saree-images');
+USING (bucket_id = 'saree-images' AND public.is_catalog_admin());
 
 -- 8. Seed Sample Starter Data (Optional)
 INSERT INTO public.sarees (
