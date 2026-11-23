@@ -9,6 +9,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { SpecialCollectionPage } from './pages/SpecialCollectionPage';
 import { RouteSeo } from './components/RouteSeo';
+import { StorefrontEffects } from './components/StorefrontEffects';
 import { PoliciesPage } from './pages/PoliciesPage';
 import { WeaveCollectionPage } from './pages/WeaveCollectionPage';
 
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <RouteSeo />
+      <StorefrontEffects />
       <Routes>
         {/* Main Storefront */}
         <Route path="/" element={<HomePage />} />
