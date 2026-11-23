@@ -60,6 +60,36 @@ export const SareeDetailPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
+  useEffect(() => {
+    if (!saree) return;
+    const canonical=SHOP_CONFIG.siteUrl.replace(/\/$/,'')+'/saree/'+encodeURIComponent(saree.id);
+    const ld=document.createElement('script');
+    ld.type='application/ld+json';
+    ld.dataset.productSchema='true';
+    ld.textContent=JSON.stringify({
+      '@context':'https://schema.org',
+      '@type':'Product',
+      name:saree.name,
+      description:saree.description,
+      image:(saree.images||[]).map(url=>url.startsWith('http')?url:new URL(url,SHOP_CONFIG.siteUrl).href),
+      category:saree.category,
+      brand:{'@type':'Brand',name:SHOP_CONFIG.name},
+      offers:{
+        '@type':'Offer',
+        url:canonical,
+        priceCurrency:'INR',
+        price:saree.price_inr,
+        availability:saree.in_stock?'https://schema.org/InStock':'https://schema.org/OutOfStock',
+        seller:{'@type':'Organization',name:SHOP_CONFIG.name}
+      }
+    });
+    document.head.appendChild(ld);
+    const description=document.querySelector('meta[name="description"]');
+    const prevDescription=description?.getAttribute('content');
+    description?.setAttribute('content',saree.description.slice(0,155));
+    return ()=>{ld.remove();if(prevDescription)description?.setAttribute('content',prevDescription);};
+  },[saree]);
+
   const handleToggleWishlist = (item: DbSaree) => {
     setWishlistIds((prev) =>
       prev.includes(item.id) ? prev.filter((i) => i !== item.id) : [...prev, item.id]

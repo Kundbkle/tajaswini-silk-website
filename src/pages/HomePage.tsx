@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { DbSaree } from '../types/database';
 import { getSarees } from '../lib/supabase';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
-import { NewArrivalsSection } from '../components/NewArrivalsSection';
-import { SareeCatalog } from '../components/SareeCatalog';
-import { DrapeStudio } from '../components/DrapeStudio';
-import { HeritageStory } from '../components/HeritageStory';
+import { ShopByWeave } from '../components/ShopByWeave';
+import { SareesInMotion } from '../components/SareesInMotion';
+import { CommunitySection } from '../components/CommunitySection';
+import { BoutiqueEditorial } from '../components/BoutiqueEditorial';
+import { ShieldCheck, PackageCheck, MapPinned, MessageCircle } from 'lucide-react';
+import { SareeCard } from '../components/SareeCard';
+
 import { Footer } from '../components/Footer';
 import { SareeDetailModal } from '../components/SareeDetailModal';
 import { BoutiqueConciergeModal } from '../components/BoutiqueConciergeModal';
@@ -17,6 +21,7 @@ import { MessageSquare, Check } from 'lucide-react';
 import { SHOP_CONFIG } from '../config/shop';
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   const [sarees, setSarees] = useState<DbSaree[]>([]);
   const [loadingSarees, setLoadingSarees] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -150,39 +155,37 @@ export const HomePage: React.FC = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <Hero
-          onExploreCollection={() => scrollTo('catalog')}
+          onExploreCollection={() => navigate('/shop')}
           onOpenConcierge={() => setIsConciergeOpen(true)}
         />
 
-        {/* New Arrivals Section driven by is_new_arrival */}
-        <NewArrivalsSection
-          sarees={sarees}
-          wishlistIds={wishlistIds}
-          onToggleWishlist={handleToggleWishlist}
-          onQuickView={(saree) => setSelectedSareeForDetail(saree)}
-          onAddToCart={handleAddToCart}
-          onViewAll={() => scrollTo('catalog')}
-        />
+        <ShopByWeave sarees={sarees} onSelectCategory={(cat) => navigate('/shop?category=' + encodeURIComponent(cat))} />
 
-        {/* Full Catalog with multi-attribute filtering */}
-        <SareeCatalog
-          sarees={sarees}
-          isLoading={loadingSarees}
-          wishlistIds={wishlistIds}
-          initialCategory={selectedCategory}
-          onToggleWishlist={handleToggleWishlist}
-          onQuickView={(saree) => setSelectedSareeForDetail(saree)}
-          onAddToCart={handleAddToCart}
-        />
+        <section id="catalog" className="bg-[#fffdf9] py-16 border-t border-[#eee4dd]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between gap-4 mb-9">
+              <div><p className="text-xs uppercase tracking-[.2em] text-[#a25c65] mb-2">The complete collection</p><h2 className="font-serif text-3xl sm:text-4xl text-[#36292b]">Every saree, <em className="font-normal">one place</em></h2></div>
+              <Link to="/shop" className="text-sm underline underline-offset-4 text-[#7c303c]">View all sarees →</Link>
+            </div>
+            {sarees.length ? <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">{sarees.slice(0,4).map(s=><SareeCard key={s.id} saree={s} isWishlisted={wishlistIds.includes(s.id)} onToggleWishlist={handleToggleWishlist} onQuickView={setSelectedSareeForDetail} onAddToCart={handleAddToCart}/>)}</div> : <p className="text-sm text-[#786964]">Our catalogue will appear here when products are published.</p>}
+          </div>
+        </section>
 
-        {/* Traditional Drape Guide & Motif Codex */}
-        <DrapeStudio
-          onExploreCategory={(cat) => setSelectedCategory(cat)}
-        />
-
-        {/* Showroom Narrative on Kumthekar Road Sadashiv Peth */}
-        <HeritageStory />
+        <BoutiqueEditorial />
+        <SareesInMotion sarees={sarees} />
+        <section className="bg-white border-y border-[#eee3dd] py-12">
+          <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-7 text-center">
+            {[
+              { label: 'Boutique in Pune', Icon: MapPinned },
+              { label: 'Detailed Saree Specifications', Icon: ShieldCheck },
+              { label: 'WhatsApp Before You Buy', Icon: MessageCircle },
+              { label: 'Care Instructions Provided', Icon: PackageCheck }
+            ].map(({label,Icon}) => <div key={label} className="flex items-center flex-col gap-3"><Icon className="text-[#863c48] w-7 h-7" /><span className="text-xs sm:text-sm font-medium text-[#564743]">{label}</span></div>)}
+          </div>
+        </section>
       </main>
+
+      <CommunitySection />
 
       {/* Footer */}
       <Footer onNavigate={scrollTo} />

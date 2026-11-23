@@ -56,12 +56,15 @@ export const SHOP_CONFIG = {
   googleMapsUrl: '',
 
   // Base Site URL for Open Graph, Canonical tags & Share Links
-  siteUrl: (import.meta.env.VITE_SITE_URL as string) || 'https://tejaswinisilk.com'
+  siteUrl: (import.meta.env.VITE_SITE_URL as string) || 'https://www.tajaswinisilkpune.com'
 };
 
 // 11 Master Categories as required
 export const SHOP_CATEGORIES = [
   'Paithani Pure Silk',
+  'Maheshwari',
+  'Ajrakh',
+  'Narayanpet',
   'Paithani Art Silk',
   '9-Yard Paithani',
   'Pure Silk',

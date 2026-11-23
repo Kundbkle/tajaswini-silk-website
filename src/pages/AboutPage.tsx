@@ -1,0 +1,9 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { SHOP_CONFIG } from '../config/shop';
+export const AboutPage: React.FC = () => {
+ useEffect(()=>{document.title='Our Story | Tejaswini Silk Pune';},[]);
+ return <div className="bg-[#fffdf9] min-h-screen"><Header cartCount={0} wishlistCount={0} onOpenCart={()=>window.location.assign('/shop')} onOpenWishlist={()=>window.location.assign('/shop')}/><main><section className="grid md:grid-cols-2 max-w-[1500px] mx-auto"><div className="py-20 px-6 sm:px-12 lg:px-20 flex flex-col justify-center"><p className="text-xs tracking-[.23em] uppercase text-[#9e5962]">Our boutique</p><h1 className="font-serif text-4xl md:text-5xl leading-tight mt-5 text-[#3e3030]">Sarees for the moments that matter.</h1><p className="mt-7 text-[#6c5a54] leading-8">Welcome to {SHOP_CONFIG.name}, a saree boutique on Kumthekar Road in Sadashiv Peth, Pune. Explore our collection of Paithani, traditional Nauvari and silk sarees, including styles for celebrations and weddings.</p><p className="mt-4 text-[#6c5a54] leading-8">Visit our showroom to see the weaves and colours in person, or contact us on WhatsApp to ask for details and availability.</p><Link to="/shop" className="bg-[#7c303c] text-white px-7 py-3.5 mt-8 self-start text-sm">Explore Sarees</Link></div><img src="/images/hero_paithani_bridal_1793599014021.jpg" alt="Silk saree at Tejaswini Silk Pune" className="w-full h-full min-h-[320px] max-h-[700px] object-cover"/></section></main><Footer/></div>;
+};

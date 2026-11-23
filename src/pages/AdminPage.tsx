@@ -85,11 +85,7 @@ export const AdminPage: React.FC = () => {
   // Check auth session
   useEffect(() => {
     if (!isSupabaseConfigured || !supabase) {
-      // In demo / fallback mode, simulate local session if remembered
-      const localAdmin = localStorage.getItem('tejaswini_admin_demo_logged_in');
-      if (localAdmin === 'true') {
-        setSession({ user: { email: 'owner@tejaswinisilk.com' } });
-      }
+      setAuthError('Admin backend is not configured. Connect Supabase to enable secure sign-in.');
       setAuthChecking(false);
       return;
     }
@@ -135,13 +131,7 @@ export const AdminPage: React.FC = () => {
     setAuthLoading(true);
 
     if (!isSupabaseConfigured || !supabase) {
-      // Demo login
-      if (email && password) {
-        localStorage.setItem('tejaswini_admin_demo_logged_in', 'true');
-        setSession({ user: { email } });
-      } else {
-        setAuthError('Please enter an email and password.');
-      }
+      setAuthError('Secure login is unavailable until Supabase is configured.');
       setAuthLoading(false);
       return;
     }
@@ -169,7 +159,6 @@ export const AdminPage: React.FC = () => {
     if (isSupabaseConfigured && supabase) {
       await supabase.auth.signOut();
     }
-    localStorage.removeItem('tejaswini_admin_demo_logged_in');
     setSession(null);
   };
 
@@ -452,10 +441,10 @@ export const AdminPage: React.FC = () => {
               <div className="p-3.5 bg-[#ffd9de]/40 border border-[#e3bdc3] rounded text-xs space-y-1 text-[#5a4044]">
                 <div className="font-bold text-[#b0004a] flex items-center gap-1.5">
                   <AlertCircle className="w-4 h-4" />
-                  <span>Demo Mode Active</span>
+                  <span>Backend Setup Required</span>
                 </div>
                 <p>
-                  To connect your real database, add <code className="font-mono bg-white px-1">VITE_SUPABASE_URL</code> and <code className="font-mono bg-white px-1">VITE_SUPABASE_ANON_KEY</code> to your environment. You can enter any email/password to test locally.
+                  Secure admin login is disabled until you configure <code className="font-mono bg-white px-1">VITE_SUPABASE_URL</code> and <code className="font-mono bg-white px-1">VITE_SUPABASE_ANON_KEY</code> to your environment. Create your owner account in Supabase Authentication before signing in.
                 </p>
               </div>
             )}

@@ -25,18 +25,18 @@ export const SareeCard: React.FC<SareeCardProps> = ({
   const whatsappEnquiryUrl = buildWhatsAppProductEnquiry(saree);
 
   return (
-    <div className="group relative bg-[#ffffff] border border-[#e3bdc3]/60 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#d81b60]/50">
+    <div className="group relative bg-[#ffffff] border border-[#eee4dd] rounded-none overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg">
       
       {/* Product Image Container */}
       <div 
-        className="relative aspect-[4/3] bg-[#f6f3f2] overflow-hidden cursor-pointer"
+        className="relative aspect-[3/4] bg-[#f6f3f2] overflow-hidden cursor-pointer"
         onClick={() => onQuickView(saree)}
       >
         <img
           src={coverImage}
           alt={saree.name}
-          width="400"
-          height="300"
+          width="450"
+          height="600"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
           onError={(e) => {
@@ -75,7 +75,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
         </button>
 
         {/* Quick View Hover Action Bar */}
-        <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 z-10">
+        <div className="absolute inset-x-3 bottom-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-center gap-2 z-10">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -103,7 +103,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
       </div>
 
       {/* Product Content Details */}
-      <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+      <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         
         <div className="space-y-1.5">
           {/* Category & Fabric as unboxed clean metadata */}

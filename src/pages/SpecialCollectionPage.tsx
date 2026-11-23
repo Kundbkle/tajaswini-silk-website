@@ -1,0 +1,14 @@
+import React, {useEffect,useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Header} from '../components/Header';
+import {Footer} from '../components/Footer';
+import {getSarees} from '../lib/supabase';
+import {DbSaree} from '../types/database';
+import {SareeCard} from '../components/SareeCard';
+import {SHOP_CONFIG} from '../config/shop';
+export const SpecialCollectionPage:React.FC<{type:'sale'|'upcoming'}>=({type})=>{
+ const [items,setItems]=useState<DbSaree[]>([]);
+ useEffect(()=>{document.title=(type==='sale'?'Sale':'Upcoming Sarees')+' | Tejaswini Silk';getSarees().then(setItems).catch(console.error)},[type]);
+ const visible=items.filter(s=>type==='sale'?(typeof s.sale_price_inr==='number'&&s.sale_price_inr<s.price_inr):s.is_upcoming===true);
+ return <div className="min-h-screen bg-[#fffdf9]"><Header cartCount={0} wishlistCount={0} onOpenCart={()=>window.location.assign('/shop')} onOpenWishlist={()=>window.location.assign('/shop')}/><main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20"><nav className="text-xs text-[#90716b] mb-8"><Link to="/">Home</Link> / {type==='sale'?'Sale':'Upcoming'}</nav><p className="uppercase text-xs tracking-[.24em] text-[#9e5962]">The saree edit</p><h1 className="font-serif text-4xl md:text-5xl mt-3 text-[#3b2d2d]">{type==='sale'?'Sale':'Upcoming Sarees'}</h1><p className="text-[#796862] mt-5 mb-12 text-sm">{type==='sale'?'Only genuine current offers appear here.':'Discover pieces announced for the next collection.'}</p>{visible.length?<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">{visible.map(s=><div key={s.id} className="border border-[#eee3dd] bg-white"><Link to={'/saree/'+encodeURIComponent(s.id)}><img loading="lazy" className="w-full aspect-[3/4] object-cover" src={s.images?.[0]||'/images/hero_paithani_bridal_1793599014021.jpg'} alt={s.name}/><div className="p-4"><div className="text-xs uppercase text-[#a25964]">{s.category}</div><h2 className="font-serif text-lg mt-2">{s.name}</h2><p className="mt-2 font-semibold">₹{(type==='sale'?s.sale_price_inr:s.price_inr)?.toLocaleString('en-IN')}</p><span className="inline-block mt-3 underline text-sm">{type==='sale'?'View saree':'View details'}</span></div></Link></div>)}</div>:<div className="text-center border border-[#eee3dd] py-20 px-5"><h2 className="font-serif text-2xl">{type==='sale'?'No sarees are on sale right now.':'No upcoming sarees have been announced yet.'}</h2><p className="text-sm text-[#88736e] mt-3">Explore our current collection in the meantime.</p><Link to="/shop" className="inline-block mt-7 px-6 py-3 bg-[#7c303c] text-white text-sm">Shop all sarees</Link></div>}</main><Footer/></div>
+};
