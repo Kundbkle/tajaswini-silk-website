@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ShoppingBag, Heart, Menu, X, MessageSquare } from 'lucide-react';
 import { SHOP_CONFIG } from '../config/shop';
+import { BrandMark } from './BrandMark';
 
 interface HeaderProps {
   cartCount: number;
@@ -33,17 +34,12 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#f1d5e2]">
-      <div className="bg-[#a40860] px-3 py-2 text-center text-white text-[10px] sm:text-xs tracking-wide">
-        Traditional Paithani & Silk Sarees · Visit our Pune boutique · Enquire on WhatsApp
+      <div className="bg-[#a40860] px-2.5 py-1.5 text-center text-white text-[10px] sm:text-xs tracking-wide">
+        <span className="sm:hidden">Authentic Paithani & Silk · Pune Boutique</span>
+        <span className="hidden sm:inline">Traditional Paithani & Silk Sarees · Visit our Pune boutique · Enquire on WhatsApp</span>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[78px] py-3 flex items-center justify-between gap-3">
-        <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMobileMenuOpen(false)}>
-          <img src="/logo.png" alt={SHOP_CONFIG.name} width="43" height="43" className="w-10 h-10 sm:w-11 sm:h-11 object-contain" />
-          <div>
-            <span className="block font-serif font-bold text-lg sm:text-xl text-[#d80880] leading-tight">{SHOP_CONFIG.name}</span>
-            <span className="font-devanagari hidden sm:block text-[10px] text-[#806361] mt-1">{SHOP_CONFIG.tagline}</span>
-          </div>
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[60px] sm:min-h-[76px] py-2 sm:py-3 flex items-center justify-between gap-3">
+        <BrandMark compact />
 
         <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-5 xl:gap-7">
           {NAV_ITEMS.map(item =>
@@ -53,8 +49,8 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-          <button type="button" onClick={onOpenWishlist} aria-label="Wishlist" className="relative p-2 text-[#563f42] hover:text-[#a40860]">
+        <div className="flex items-center gap-0.5 sm:gap-2 shrink-0">
+          <button type="button" onClick={onOpenWishlist} aria-label="Wishlist" className="relative p-1.5 sm:p-2 text-[#563f42] hover:text-[#a40860]">
             <Heart size={20} />
             {wishlistCount > 0 && <span className="absolute -top-1 -right-1 bg-[#a40860] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>}
           </button>
@@ -63,11 +59,11 @@ export const Header: React.FC<HeaderProps> = ({
             {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-[#a40860] text-white text-[10px] min-w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>}
           </button>
           <a href={SHOP_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp enquiry"
-             className="p-2 sm:px-3.5 sm:py-2 bg-[#25d366] text-white inline-flex items-center gap-1.5 rounded-sm">
+             className="p-1.5 sm:px-3.5 sm:py-2 bg-[#25d366] text-white inline-flex items-center gap-1.5 rounded-sm">
             <MessageSquare size={18} /> <span className="hidden xl:inline text-xs font-semibold">WhatsApp</span>
           </a>
           <button type="button" aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileMenuOpen} aria-controls="mobile-shop-menu"
-            onClick={() => setMobileMenuOpen(open => !open)} className="lg:hidden p-2 text-[#573f40]">
+            onClick={() => setMobileMenuOpen(open => !open)} className="lg:hidden p-1.5 sm:p-2 text-[#573f40]">
             {mobileMenuOpen ? <X size={23} /> : <Menu size={23} />}
           </button>
         </div>
