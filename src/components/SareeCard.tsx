@@ -25,11 +25,11 @@ export const SareeCard: React.FC<SareeCardProps> = ({
   const whatsappEnquiryUrl = buildWhatsAppProductEnquiry(saree);
 
   return (
-    <div className="group relative bg-[#ffffff] border border-[#eee4dd] rounded-none overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg">
+    <div className="group relative bg-[#ffffff] border border-[#f4e0e9] rounded-none overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg">
       
       {/* Product Image Container */}
       <div 
-        className="relative aspect-[3/4] bg-[#f6f3f2] overflow-hidden cursor-pointer"
+        className="relative aspect-[3/4] bg-[#fff0f6] overflow-hidden cursor-pointer"
         onClick={() => onQuickView(saree)}
       >
         <img
@@ -52,7 +52,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
             </span>
           )}
           {saree.is_new_arrival && saree.in_stock && (
-            <span className="bg-[#b0004a] text-white px-2.5 py-1 text-[11px] font-bold rounded shadow-sm">
+            <span className="bg-[#ad075f] text-white px-2.5 py-1 text-[11px] font-bold rounded shadow-sm">
               New Arrival
             </span>
           )}
@@ -66,8 +66,8 @@ export const SareeCard: React.FC<SareeCardProps> = ({
           }}
           className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-all z-10 ${
             isWishlisted
-              ? 'bg-[#b0004a] text-white shadow'
-              : 'bg-white/85 text-[#5a4044] hover:text-[#b0004a] hover:bg-white shadow-sm'
+              ? 'bg-[#ad075f] text-white shadow'
+              : 'bg-white/85 text-[#5a4044] hover:text-[#ad075f] hover:bg-white shadow-sm'
           }`}
           aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -83,7 +83,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
             }}
             className="flex-1 py-2 text-xs font-semibold text-[#1b1c1c] bg-white/95 hover:bg-white rounded shadow-md flex items-center justify-center gap-1.5 transition-colors"
           >
-            <Eye className="w-3.5 h-3.5 text-[#b0004a]" />
+            <Eye className="w-3.5 h-3.5 text-[#ad075f]" />
             <span>View Details</span>
           </button>
           
@@ -93,7 +93,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
                 e.stopPropagation();
                 onAddToCart(saree);
               }}
-              className="py-2 px-3 text-xs font-semibold text-white bg-[#b0004a] hover:bg-[#90003b] rounded shadow-md flex items-center justify-center transition-colors"
+              className="py-2 px-3 text-xs font-semibold text-white bg-[#ad075f] hover:bg-[#85044d] rounded shadow-md flex items-center justify-center transition-colors"
               title="Add to Shopping Bag"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ export const SareeCard: React.FC<SareeCardProps> = ({
         
         <div className="space-y-1.5">
           {/* Category & Fabric as unboxed clean metadata */}
-          <div className="flex items-center gap-2 text-xs text-[#805062]">
+          <div className="flex items-center gap-2 text-xs text-[#8d4770]">
             <span className="font-semibold uppercase tracking-wider">{saree.category}</span>
             <span aria-hidden="true">·</span>
             <span>{saree.fabric}</span>
@@ -122,14 +122,14 @@ export const SareeCard: React.FC<SareeCardProps> = ({
           {/* Saree Name */}
           <h3
             onClick={() => onQuickView(saree)}
-            className="font-serif text-base sm:text-lg font-bold text-[#1b1c1c] group-hover:text-[#b0004a] transition-colors cursor-pointer line-clamp-1"
+            className="font-serif text-base sm:text-lg font-bold text-[#1b1c1c] group-hover:text-[#ad075f] transition-colors cursor-pointer line-clamp-1"
           >
             {saree.name}
           </h3>
 
           {/* Optional Marathi Name */}
           {saree.marathi_name && (
-            <div className="font-devanagari text-xs text-[#805062] line-clamp-1 font-medium">
+            <div className="font-devanagari text-xs text-[#8d4770] line-clamp-1 font-medium">
               {saree.marathi_name}
             </div>
           )}
@@ -141,10 +141,10 @@ export const SareeCard: React.FC<SareeCardProps> = ({
         </div>
 
         {/* Pricing & Footer Actions */}
-        <div className="pt-3 border-t border-[#e3bdc3]/40 flex items-center justify-between">
+        <div className="pt-3 border-t border-[#f0c9dd]/40 flex items-center justify-between">
           <div>
-            <div className="text-[10px] text-[#805062] uppercase tracking-wider">Price (INR)</div>
-            <div className="font-serif text-lg font-bold text-[#b0004a] tabular-nums">
+            <div className="text-[10px] text-[#8d4770] uppercase tracking-wider">Price (INR)</div>
+            <div className="font-serif text-lg font-bold text-[#ad075f] tabular-nums">
               ₹{saree.price_inr.toLocaleString('en-IN')}
             </div>
           </div>
@@ -165,12 +165,12 @@ export const SareeCard: React.FC<SareeCardProps> = ({
             {saree.in_stock ? (
               <button
                 onClick={() => onAddToCart(saree)}
-                className="text-xs font-semibold px-3 py-1.5 text-white bg-[#b0004a] hover:bg-[#90003b] rounded transition-colors whitespace-nowrap cursor-pointer"
+                className="text-xs font-semibold px-3 py-1.5 text-white bg-[#ad075f] hover:bg-[#85044d] rounded transition-colors whitespace-nowrap cursor-pointer"
               >
                 Add to Bag
               </button>
             ) : (
-              <span className="text-xs text-[#805062] font-medium px-2 py-1 bg-[#f6f3f2] rounded">
+              <span className="text-xs text-[#8d4770] font-medium px-2 py-1 bg-[#fff0f6] rounded">
                 Sold Out
               </span>
             )}
