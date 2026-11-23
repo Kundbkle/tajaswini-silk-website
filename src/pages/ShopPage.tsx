@@ -64,7 +64,7 @@ export const ShopPage: React.FC = () => {
     <Header cartCount={cart.reduce((n,i)=>n+i.quantity,0)} wishlistCount={wishlistIds.length} onOpenCart={()=>setCartOpen(true)} onOpenWishlist={()=>setWishlistOpen(true)} />
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <nav className="text-xs text-[#826c68] mb-8"><Link to="/">Home</Link> / All Sarees</nav>
-      <div className="mb-10"><p className="uppercase tracking-[.25em] text-xs text-[#9e5560] mb-2">Handpicked at our Pune boutique</p><h1 className="font-serif text-4xl md:text-5xl text-[#382e2b]">Shop All Sarees</h1><p className="mt-3 text-[#786964] text-sm">Find your next beautiful drape. Browse by collection, fabric, colour and price.</p></div>
+      <div className="mb-10 ts-floral-bg border border-[#f4e0e9] rounded-sm px-5 sm:px-9 py-7 sm:py-10"><p className="uppercase tracking-[.25em] text-xs text-[#9e5560] mb-2">Handpicked at our Pune boutique</p><h1 className="font-serif text-4xl md:text-5xl text-[#382e2b]">Shop All Sarees</h1><p className="mt-3 text-[#786964] text-sm">Find your next beautiful drape. Browse by collection, fabric, colour and price.</p></div>
       <div className="flex flex-col lg:flex-row gap-8">
         <aside className="lg:w-[245px] shrink-0">
           <div className="flex items-center gap-2 font-semibold text-sm uppercase tracking-widest text-[#6d3a42] border-b pb-4 mb-5"><SlidersHorizontal size={17}/> Filters</div>
