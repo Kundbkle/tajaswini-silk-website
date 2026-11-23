@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<!-- Original, compact peacock silhouette designed for browser cursors -->
+<g stroke="#113c43" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+<path d="M26 34C13 29 8 14 10 7c9 0 20 13 21 27" fill="#14766d"/>
+<path d="M28 33C22 19 26 7 32 4c6 6 6 22 2 30" fill="#0c827a"/>
+<path d="M35 34c4-17 14-26 21-26 2 9-7 23-19 29" fill="#167a70"/>
+<path d="M20 37C9 38 3 30 4 22c9 0 19 6 24 16" fill="#136b68"/>
+<path d="M40 38c10-12 18-13 21-9-2 9-13 13-22 14" fill="#1a6b75"/>
+<ellipse cx="17" cy="19" rx="5" ry="8" transform="rotate(-32 17 19)" fill="#d7b56c" stroke="none"/>
+<ellipse cx="32" cy="17" rx="5" ry="9" fill="#d7b56c" stroke="none"/>
+<ellipse cx="46" cy="20" rx="5" ry="8" transform="rotate(29 46 20)" fill="#d7b56c" stroke="none"/>
+<ellipse cx="17" cy="19" rx="2.5" ry="5" transform="rotate(-32 17 19)" fill="#124f8b" stroke="none"/>
+<ellipse cx="32" cy="17" rx="2.5" ry="5" fill="#124f8b" stroke="none"/>
+<ellipse cx="46" cy="20" rx="2.5" ry="5" transform="rotate(29 46 20)" fill="#124f8b" stroke="none"/>
+<path d="M31 33c-6 2-11 10-9 17 2 8 18 11 23 3 4-7-2-18-10-20" fill="#126d82"/>
+<path d="M29 52c4 5 10 5 14 1" fill="none" stroke="#d7b56c" stroke-width="1.8"/>
+<path d="M29 32c-8-9-7-20 0-23 6 2 9 10 8 16" fill="#16768e"/>
+<path d="M29 14l-4-5m5 4V6m3 7 3-6" stroke="#b89546" stroke-width="2"/>
+<circle cx="25" cy="8" r="2" fill="#d7b56c" stroke="none"/>
+<circle cx="30" cy="5" r="2" fill="#d7b56c" stroke="none"/>
+<circle cx="36" cy="7" r="2" fill="#d7b56c" stroke="none"/>
+<circle cx="31" cy="18" r="1.5" fill="#142f35" stroke="none"/>
+<path d="m29 21-5 2 5 2" fill="#d7a33c" stroke="none"/>
+<path d="M28 57v4m11-4v4" stroke="#a77a36" stroke-width="2"/>
+</g></svg>
