@@ -80,6 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setMobileMenuOpen(false)}>{item.label}</NavLink>
         )}
       </nav>}
+      <div className="boutique-brand-trim" aria-hidden="true" />
     </header>
   );
 };
