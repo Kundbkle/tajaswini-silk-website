@@ -49,5 +49,35 @@ export const StorefrontEffects = () => {
     };
   }, [pathname]);
 
+  // A faint orbit follows interactive items, complementing the small peacock
+  // pointer without obscuring clicks or affecting touch/keyboard users.
+  useEffect(() => {
+    if (pathname.startsWith('/admin') ||
+        !window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+
+    const halo = document.createElement('div');
+    halo.className = 'ts-cursor-halo';
+    halo.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(halo);
+
+    const onMove = (event: PointerEvent) => {
+      halo.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+      const target = event.target;
+      const interactive = target instanceof Element &&
+        target.closest('a, button, select, [role="button"]');
+      halo.style.opacity = interactive ? '1' : '0';
+    };
+    const onLeave = () => { halo.style.opacity = '0'; };
+    window.addEventListener('pointermove', onMove, {passive:true});
+    window.addEventListener('blur', onLeave);
+    document.addEventListener('pointerleave', onLeave);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('blur', onLeave);
+      document.removeEventListener('pointerleave', onLeave);
+      halo.remove();
+    };
+  }, [pathname]);
+
   return null;
 };
