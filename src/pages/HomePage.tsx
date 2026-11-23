@@ -8,6 +8,7 @@ import { ShopByWeave } from '../components/ShopByWeave';
 import { SareesInMotion } from '../components/SareesInMotion';
 import { CommunitySection } from '../components/CommunitySection';
 import { BoutiqueEditorial } from '../components/BoutiqueEditorial';
+import { CollectionSpotlight } from '../components/CollectionSpotlight';
 import { ShieldCheck, PackageCheck, MapPinned, MessageCircle } from 'lucide-react';
 import { SareeCard } from '../components/SareeCard';
 
@@ -161,15 +162,7 @@ export const HomePage: React.FC = () => {
 
         <ShopByWeave sarees={sarees} onSelectCategory={(cat) => navigate('/shop?category=' + encodeURIComponent(cat))} />
 
-        <section id="catalog" className="bg-[#fffbfd] py-16 border-t border-[#f4e0e9]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between gap-4 mb-9">
-              <div><p className="text-xs uppercase tracking-[.2em] text-[#b70b6a] mb-2">The complete collection</p><h2 className="font-serif text-3xl sm:text-4xl text-[#36292b]">Every saree, <em className="font-normal">one place</em></h2></div>
-              <Link to="/shop" className="text-sm underline underline-offset-4 text-[#a40860]">View all sarees →</Link>
-            </div>
-            {sarees.length ? <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">{sarees.slice(0,4).map(s=><SareeCard key={s.id} saree={s} isWishlisted={wishlistIds.includes(s.id)} onToggleWishlist={handleToggleWishlist} onQuickView={setSelectedSareeForDetail} onAddToCart={handleAddToCart}/>)}</div> : <p className="text-sm text-[#786964]">Our catalogue will appear here when products are published.</p>}
-          </div>
-        </section>
+        <CollectionSpotlight sarees={sarees} />
 
         <BoutiqueEditorial />
         <SareesInMotion sarees={sarees} />
