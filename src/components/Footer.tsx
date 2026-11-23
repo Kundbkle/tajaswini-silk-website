@@ -14,11 +14,11 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
   };
 
   return (
-    <footer id="contact" className="bg-[#1b1c1c] text-[#fbf9f8] pt-14 pb-12 border-t border-[#303030]">
+    <footer id="contact" className="bg-[#541335] text-[#fff9fc] pt-14 pb-12 border-t border-[#6a2450]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Row: Brand & Tagline & Contact Summary */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#303030] items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#6a2450] items-start">
           
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
                 <h3 className="font-serif text-2xl font-bold text-white tracking-tight leading-none">
                   {SHOP_CONFIG.name}
                 </h3>
-                <p className="font-devanagari text-xs text-[#ffd9de] font-medium mt-1">
+                <p className="font-devanagari text-xs text-[#ffe0ee] font-medium mt-1">
                   {SHOP_CONFIG.tagline}
                 </p>
               </div>
@@ -48,20 +48,20 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
             </p>
 
             {/* GST Number Displayed prominently as requested */}
-            <div className="inline-block p-2.5 bg-[#303030] rounded border border-[#5a4044] text-xs">
-              <span className="text-[#ffd9de] font-semibold">GSTIN: </span>
+            <div className="inline-block p-2.5 bg-[#6a2450] rounded border border-[#5a4044] text-xs">
+              <span className="text-[#ffe0ee] font-semibold">GSTIN: </span>
               <span className="font-mono text-white font-bold tracking-wider">{SHOP_CONFIG.gstNo}</span>
             </div>
           </div>
 
           {/* Quick WhatsApp Action Banner */}
-          <div className="lg:col-span-6 p-5 bg-[#303030] border border-[#5a4044] rounded-lg space-y-3">
+          <div className="lg:col-span-6 p-5 bg-[#6a2450] border border-[#5a4044] rounded-lg space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-[#25d366] fill-[#25d366]" />
                 <span className="text-sm font-bold text-white">Direct WhatsApp Assistance</span>
               </div>
-              <span className="font-mono text-xs text-[#ffd9de] font-semibold">
+              <span className="font-mono text-xs text-[#ffe0ee] font-semibold">
                 +91 {SHOP_CONFIG.whatsapp}
               </span>
             </div>
@@ -83,11 +83,11 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
 
         </div>
 
-        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3 border-b border-[#303030] py-5 text-sm text-white/85">
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3 border-b border-[#6a2450] py-5 text-sm text-white/85">
           <Link to="/">Home</Link><Link to="/collections">Collections</Link><Link to="/shop">All Sarees</Link><Link to="/sale">Sale</Link><Link to="/upcoming-sarees">Upcoming</Link>
         </nav>
         {/* Middle Row: Store Location, Owners, Hours & Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-b border-[#303030] text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-b border-[#6a2450] text-xs">
           
           {/* Col 1: Showroom Address */}
           <div className="space-y-2.5">
@@ -95,7 +95,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
               Store Address
             </h4>
             <div className="flex items-start gap-2 text-[#dcd9d9]">
-              <MapPin className="w-4 h-4 text-[#b0004a] shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-[#ad075f] shrink-0 mt-0.5" />
               <address className="not-italic leading-relaxed">
                 {SHOP_CONFIG.address.number}, {SHOP_CONFIG.address.shopNo},<br />
                 {SHOP_CONFIG.address.building},<br />
@@ -110,7 +110,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
                 href={SHOP_CONFIG.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] text-[#ffd9de] hover:underline pt-1"
+                className="inline-flex items-center gap-1 text-[11px] text-[#ffe0ee] hover:underline pt-1"
               >
                 <span>View on Google Maps</span>
                 <ExternalLink className="w-3 h-3" />
@@ -127,20 +127,20 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
               {SHOP_CONFIG.owners.map((owner) => (
                 <div key={owner.name} className="flex items-center justify-between">
                   <span>{owner.name}:</span>
-                  <a href={`tel:${owner.phone}`} className="text-white hover:text-[#ffd9de] font-mono">
+                  <a href={`tel:${owner.phone}`} className="text-white hover:text-[#ffe0ee] font-mono">
                     {owner.phone}
                   </a>
                 </div>
               ))}
             </div>
 
-            <div className="pt-2 border-t border-[#404040] space-y-1.5 text-[#dcd9d9]">
+            <div className="pt-2 border-t border-[#743258] space-y-1.5 text-[#dcd9d9]">
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#b0004a]" />
+                <Phone className="w-3.5 h-3.5 text-[#ad075f]" />
                 <span>Landline: {SHOP_CONFIG.landline}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#b0004a]" />
+                <Mail className="w-3.5 h-3.5 text-[#ad075f]" />
                 <a href={`mailto:${SHOP_CONFIG.email}`} className="hover:underline">
                   {SHOP_CONFIG.email}
                 </a>
@@ -156,14 +156,14 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
             
             {SHOP_CONFIG.openingHours ? (
               <div className="flex items-start gap-2 text-[#dcd9d9]">
-                <Clock className="w-4 h-4 text-[#b0004a] shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-[#ad075f] shrink-0 mt-0.5" />
                 <span>{SHOP_CONFIG.openingHours}</span>
               </div>
             ) : null}
 
             {/* Social Links (only shown if configured) */}
             {(SHOP_CONFIG.instagramUrl || SHOP_CONFIG.facebookUrl) && (
-              <div className="pt-3 border-t border-[#404040] space-y-1">
+              <div className="pt-3 border-t border-[#743258] space-y-1">
                 <span className="text-[#8e6f74] block">Follow Us:</span>
                 <div className="flex items-center gap-3">
                   {SHOP_CONFIG.instagramUrl && (
@@ -171,7 +171,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
                       href={SHOP_CONFIG.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#ffd9de] hover:underline"
+                      className="text-[#ffe0ee] hover:underline"
                     >
                       Instagram
                     </a>
@@ -181,7 +181,7 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
                       href={SHOP_CONFIG.facebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#ffd9de] hover:underline"
+                      className="text-[#ffe0ee] hover:underline"
                     >
                       Facebook
                     </a>
@@ -198,22 +198,22 @@ export const Footer: React.FC<{ onNavigate?: (id: string) => void }> = ({ onNavi
             </h4>
             <ul className="space-y-1.5 text-[#dcd9d9]">
               <li>
-                <button onClick={() => scrollTo('catalog')} className="hover:text-[#ffd9de] cursor-pointer">
+                <button onClick={() => scrollTo('catalog')} className="hover:text-[#ffe0ee] cursor-pointer">
                   All Sarees Catalog
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('new-arrivals')} className="hover:text-[#ffd9de] cursor-pointer">
+                <button onClick={() => scrollTo('new-arrivals')} className="hover:text-[#ffe0ee] cursor-pointer">
                   New Arrivals
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('drape-studio')} className="hover:text-[#ffd9de] cursor-pointer">
+                <button onClick={() => scrollTo('drape-studio')} className="hover:text-[#ffe0ee] cursor-pointer">
                   Nauvari & Drape Guide
                 </button>
               </li>
               <li>
-                <a href={SHOP_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#ffd9de]">
+                <a href={SHOP_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#ffe0ee]">
                   WhatsApp Enquiry
                 </a>
               </li>

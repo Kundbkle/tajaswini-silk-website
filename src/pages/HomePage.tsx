@@ -132,11 +132,11 @@ export const HomePage: React.FC = () => {
   const wishlistedSarees = sarees.filter((s) => wishlistIds.includes(s.id));
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fbf9f8] text-[#1b1c1c] selection:bg-[#ffd9de] selection:text-[#b0004a]">
+    <div className="min-h-screen flex flex-col bg-[#fff9fc] text-[#1b1c1c] selection:bg-[#ffe0ee] selection:text-[#ad075f]">
       
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1b1c1c] text-white text-xs px-4 py-2.5 rounded-lg shadow-xl border border-[#e3bdc3]/40 flex items-center gap-2 animate-fadeIn">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1b1c1c] text-white text-xs px-4 py-2.5 rounded-lg shadow-xl border border-[#f0c9dd]/40 flex items-center gap-2 animate-fadeIn">
           <Check className="w-4 h-4 text-[#25d366]" />
           <span>{toast}</span>
         </div>
@@ -161,11 +161,11 @@ export const HomePage: React.FC = () => {
 
         <ShopByWeave sarees={sarees} onSelectCategory={(cat) => navigate('/shop?category=' + encodeURIComponent(cat))} />
 
-        <section id="catalog" className="bg-[#fffdf9] py-16 border-t border-[#eee4dd]">
+        <section id="catalog" className="bg-[#fffbfd] py-16 border-t border-[#f4e0e9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between gap-4 mb-9">
-              <div><p className="text-xs uppercase tracking-[.2em] text-[#a25c65] mb-2">The complete collection</p><h2 className="font-serif text-3xl sm:text-4xl text-[#36292b]">Every saree, <em className="font-normal">one place</em></h2></div>
-              <Link to="/shop" className="text-sm underline underline-offset-4 text-[#7c303c]">View all sarees →</Link>
+              <div><p className="text-xs uppercase tracking-[.2em] text-[#b70b6a] mb-2">The complete collection</p><h2 className="font-serif text-3xl sm:text-4xl text-[#36292b]">Every saree, <em className="font-normal">one place</em></h2></div>
+              <Link to="/shop" className="text-sm underline underline-offset-4 text-[#a40860]">View all sarees →</Link>
             </div>
             {sarees.length ? <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">{sarees.slice(0,4).map(s=><SareeCard key={s.id} saree={s} isWishlisted={wishlistIds.includes(s.id)} onToggleWishlist={handleToggleWishlist} onQuickView={setSelectedSareeForDetail} onAddToCart={handleAddToCart}/>)}</div> : <p className="text-sm text-[#786964]">Our catalogue will appear here when products are published.</p>}
           </div>
@@ -180,7 +180,7 @@ export const HomePage: React.FC = () => {
               { label: 'Detailed Saree Specifications', Icon: ShieldCheck },
               { label: 'WhatsApp Before You Buy', Icon: MessageCircle },
               { label: 'Care Instructions Provided', Icon: PackageCheck }
-            ].map(({label,Icon}) => <div key={label} className="flex items-center flex-col gap-3"><Icon className="text-[#863c48] w-7 h-7" /><span className="text-xs sm:text-sm font-medium text-[#564743]">{label}</span></div>)}
+            ].map(({label,Icon}) => <div key={label} className="flex items-center flex-col gap-3"><Icon className="text-[#a40860] w-7 h-7" /><span className="text-xs sm:text-sm font-medium text-[#564743]">{label}</span></div>)}
           </div>
         </section>
       </main>

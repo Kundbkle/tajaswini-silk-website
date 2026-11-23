@@ -6,28 +6,32 @@
     --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-devanagari: 'Noto Sans Devanagari', sans-serif;
 
-    --color-primary: #b0004a;
-    --color-primary-container: #d81b60;
-    --color-primary-fixed: #ffd9de;
+    --color-primary: #d80880;
+    --color-primary-container: #ad075f;
+    --color-primary-fixed: #ffe0ee;
     --color-on-primary: #ffffff;
+    --brand-magenta: #d80880;
+    --brand-magenta-deep: #a40860;
+    --brand-soft-pink: #fceaf2;
+    --brand-vermilion: #d82820;
     
-    --color-secondary: #805062;
-    --color-secondary-container: #fec1d6;
+    --color-secondary: #8d4770;
+    --color-secondary-container: #f9b9d9;
     
     --color-tertiary: #00662c;
     --color-tertiary-emerald: #25d366;
     
-    --color-zari: #c59b27;
-    --color-zari-light: #f7e7b4;
+    --color-zari: #d82820;
+    --color-zari-light: #ffe8df;
 
-    --color-surface: #fbf9f8;
+    --color-surface: #fff9fc;
     --color-surface-dim: #dcd9d9;
     --color-surface-container: #f0eded;
     --color-surface-container-high: #eae8e7;
     --color-on-surface: #1b1c1c;
     --color-on-surface-variant: #5a4044;
     --color-outline: #8e6f74;
-    --color-outline-variant: #e3bdc3;
+    --color-outline-variant: #f0c9dd;
   }
 
   body {
@@ -54,14 +58,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f6f3f2;
+  background: #fff0f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d81b6080;
+  background: #d8088080;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b0004a;
+  background: #ad075f;
 }
 
 
@@ -143,3 +147,7 @@
     animation: none !important;
   }
 }
+
+/* Visiting card colour signature: vibrant fuchsia, blush floral ivory and vermilion trim. */
+.boutique-brand-trim { height: 4px; background: linear-gradient(90deg, #d80880, #d82820, #d80880); }
+::selection { background: #ffe0ee; color: #85044d; }

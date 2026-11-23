@@ -7,9 +7,9 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({onExploreCollection,onOpenConcierge}) => (
-  <section className="grid lg:grid-cols-[46%_54%] min-h-[570px] bg-[#f1e6dd]">
+  <section className="grid lg:grid-cols-[46%_54%] min-h-[570px] bg-[#fceaf2]">
     <div className="px-7 sm:px-12 lg:px-[min(8vw,120px)] py-16 lg:py-20 flex flex-col justify-center items-start">
-      <p className="uppercase text-[10px] tracking-[.27em] font-bold text-[#8e4659]">Heritage in every thread</p>
+      <p className="uppercase text-[10px] tracking-[.27em] font-bold text-[#c00a72]">Heritage in every thread</p>
       <h1 className="font-serif text-[3.2rem] sm:text-[4.3rem] xl:text-[5rem] leading-[1.13] tracking-tight font-medium text-[#332c2b] mt-5">
         A story in<br/>every drape.
       </h1>
@@ -17,8 +17,8 @@ export const Hero: React.FC<HeroProps> = ({onExploreCollection,onOpenConcierge})
         Beautiful Paithani, silk and traditional sarees, thoughtfully chosen for your special moments at {SHOP_CONFIG.name}, Pune.
       </p>
       <div className="flex flex-wrap gap-3 mt-8">
-        <button onClick={onExploreCollection} className="px-7 py-3.5 bg-[#682b3c] hover:bg-[#4f1d2f] text-white uppercase tracking-[.12em] text-[11px] font-bold">Explore Sarees →</button>
-        <button onClick={onOpenConcierge} className="px-7 py-3.5 border border-[#682b3c] text-[#682b3c] hover:bg-[#f6e6e5] uppercase tracking-[.12em] text-[11px] font-bold">Personal Assistance</button>
+        <button onClick={onExploreCollection} className="px-7 py-3.5 bg-[#a40860] hover:bg-[#85044d] text-white uppercase tracking-[.12em] text-[11px] font-bold">Explore Sarees →</button>
+        <button onClick={onOpenConcierge} className="px-7 py-3.5 border border-[#a40860] text-[#a40860] hover:bg-[#f6e6e5] uppercase tracking-[.12em] text-[11px] font-bold">Personal Assistance</button>
       </div>
     </div>
     <div className="relative min-h-[420px] lg:min-h-[570px] bg-[#bda6a0] overflow-hidden">
