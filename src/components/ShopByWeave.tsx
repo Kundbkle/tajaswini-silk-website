@@ -11,7 +11,7 @@ export const ShopByWeave:React.FC<{sarees:DbSaree[];onSelectCategory?:(category:
   {slug:'narayanpet',name:'Narayanpet',description:'Traditional borders and everyday grace.',matches:(s:DbSaree)=>s.category==='Narayanpet'}
  ];
  return <section className="bg-white py-16 md:py-20" aria-labelledby="weave-heading"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <p className="uppercase tracking-[.24em] text-xs font-semibold text-[#a15a63] text-center">Traditional Indian weaving</p>
+  <p className="uppercase tracking-[.24em] text-xs font-semibold text-[#b70b6a] text-center">Traditional Indian weaving</p>
   <h2 id="weave-heading" className="font-serif text-center text-3xl md:text-4xl mt-3 text-[#3b2c2c]">Shop by Weave</h2>
   <p className="text-sm text-[#796661] mt-4 text-center">Learn about each weave and explore our listed pieces.</p>
   <div className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-5 mt-10">
